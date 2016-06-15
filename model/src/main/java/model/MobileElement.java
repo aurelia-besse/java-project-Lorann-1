@@ -3,7 +3,7 @@ package model;
 public class MobileElement extends Element {
 	
 	public MobileElement ( String url, Permeability permeability){
-		super(new Sprite(url),permeability)
+		super(permeability,new Sprite(url));
 	}
 }
 

@@ -1,8 +1,8 @@
 package model;
 
 public class Lorann extends MobileElement {
-	public Lorann ( String url, Permeability permeability){
-		super(url,Permeability.PENETRABLE)
+	public Lorann ( int x, int y, String url){
+		super(url,Permeability.PENETRABLE);
 	}
 }
 
