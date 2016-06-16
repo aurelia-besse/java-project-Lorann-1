@@ -3,7 +3,6 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -71,7 +70,8 @@ public class Panel extends JPanel implements Observer{
 			x++;
 			
 		} 
-	
+		design(g, frame.game.getMap().getHero().getSprite().getImage(),frame.game.getMap().getHero().getX(), frame.game.getMap().getHero().getY());
+		
 	}
 
 	private void design(Graphics g, Image image, int x, int y) {

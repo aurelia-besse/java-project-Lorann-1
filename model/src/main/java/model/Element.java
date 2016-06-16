@@ -39,6 +39,11 @@ public class Element implements IElement {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	public void setPosition(int x, int y){
+		this.x = x;
+		this.y = y;
+	}
 
 	/* (non-Javadoc)
 	 * @see model.IElement#getPermeability()
@@ -68,6 +73,7 @@ public class Element implements IElement {
 	public Image getImage() {
 		return this.getSprite().getImage();
 	}
+	
 	
 	
 }

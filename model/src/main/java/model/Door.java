@@ -1,6 +1,7 @@
 package model;
 
 import contract.IDoor;
+import contract.Permeability;
 
 public class Door extends StaticElement implements IDoor {
 	

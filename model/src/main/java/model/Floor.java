@@ -1,6 +1,7 @@
 package model;
 
 import contract.IFloor;
+import contract.Permeability;
 
 public class Floor extends StaticElement implements IFloor{
 

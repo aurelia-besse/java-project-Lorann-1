@@ -17,5 +17,9 @@ public interface IMap {
 	public IElement getElement(int x, int y);
 
 	void addElement(IElement element, int x, int y);
+	
+	public IElement getHero();
+	
+	public void setHero(IElement hero);
 
 }

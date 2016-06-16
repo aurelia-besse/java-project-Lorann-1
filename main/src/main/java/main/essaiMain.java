@@ -16,8 +16,10 @@ public abstract class essaiMain {
 		public static void main(final String[] args) throws IOException {
 			IGame game = new Game();
 			IFrame frame = new Frame(game);
+			IControler control = new Controler(game,frame);
+			frame.setControler(control);
 			
-			IControler control = new Controler(game);
+			
 			
 		}
 	

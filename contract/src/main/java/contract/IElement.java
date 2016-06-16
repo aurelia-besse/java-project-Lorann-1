@@ -7,6 +7,8 @@ public interface IElement {
 	int getX();
 
 	int getY();
+	
+	public void setPosition(int x, int y);
 
 	public IPermeability getPermeability();
 

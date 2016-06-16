@@ -27,7 +27,7 @@ public class Game extends Observable implements IGame {
 	public void initMap(){
 		map = new Map(20,12);
 		try {
-			ResultSet result = dbgame.procedure("{call elementMap(?)}", 2);
+			ResultSet result = dbgame.procedure("{call elementMap(?)}", 1);
 			while(result.next()){
 				int x = result.getInt("x");
 				int y = result.getInt("y");
@@ -36,7 +36,7 @@ public class Game extends Observable implements IGame {
 				System.out.println(url);
 				switch(id){
 				case 1: case 2: case 3:
-					map.addElement(new Wall(x, y,url), x, y);
+					map.addElement(new Wall(x, y,url),x,y);
 					break;
 				case 4:
 					map.addElement(new BubbleKey(x, y, url), x, y);
@@ -45,7 +45,7 @@ public class Game extends Observable implements IGame {
 					map.addElement(new Door(x, y, url), x, y);
 					break;
 				case 7:
-					map.addElement(new Lorann(x, y, url), x, y);
+					map.setHero(new Lorann(x, y, url));
 					break;
 				case 8: case 9 : case 10: case 11:
 					map.addElement(new Demon(x, y, url), x, y);
@@ -63,6 +63,11 @@ public class Game extends Observable implements IGame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void change(){
+	setChanged();
+	notifyObservers();
 	}
 
 	/* (non-Javadoc)

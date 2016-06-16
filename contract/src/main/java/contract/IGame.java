@@ -12,4 +12,6 @@ public interface IGame {
 	Observable getObservable();
 	
 	void addObserver(Observer observer);
+	
+	public void change();
 }

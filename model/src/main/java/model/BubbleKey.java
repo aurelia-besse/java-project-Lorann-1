@@ -1,6 +1,7 @@
 package model;
 
 import contract.IBubbleKey;
+import contract.Permeability;
 
 public class BubbleKey extends Loot implements IBubbleKey {
 	

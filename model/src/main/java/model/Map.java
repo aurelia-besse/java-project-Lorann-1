@@ -12,6 +12,7 @@ public class Map implements IMap {
 	private int height;
 	private IElement		elements[][];
 	private ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
+	private IElement hero;
 	
 	public Map(int width, int height){
 		this.width = width;
@@ -79,6 +80,14 @@ public class Map implements IMap {
 		// TODO Auto-generated method stub
 		
 	}
+	public IElement getHero() {
+		return hero;
+	}
+	public void setHero(IElement hero) {
+		this.hero = hero;
+	}
+	
+	
 	
 	
 }

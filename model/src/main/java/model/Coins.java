@@ -1,6 +1,7 @@
 package model;
 
 import contract.ICoins;
+import contract.Permeability;
 
 public class Coins extends Loot implements ICoins {
 	
