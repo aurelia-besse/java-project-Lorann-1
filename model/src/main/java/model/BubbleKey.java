@@ -1,7 +1,8 @@
 package model;
 
 public class BubbleKey extends Loot {
-	public BubbleKey ( String url, Permeability permeability){
+	
+	public BubbleKey(int x, int y,String url) {
 		super(url,Permeability.BLOCKING);
 	}
 }

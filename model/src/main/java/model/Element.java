@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Image;
+
 public class Element {
 	private int x, y;
 	private Permeability permeability;
@@ -7,7 +9,8 @@ public class Element {
 	
 
 	public Element(Permeability permeability, Sprite sprite){
-		
+		this.setSprite(sprite);
+		this.setPermeability(permeability);
 	}
 
 	public int getX() {
@@ -40,6 +43,10 @@ public class Element {
 
 	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
+	}
+	
+	public Image getImage() {
+		return this.getSprite().getImage();
 	}
 	
 	

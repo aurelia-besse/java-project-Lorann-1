@@ -1,16 +1,24 @@
 package model;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Sprite {
+private Image image;
+public Sprite( final String url) {
+		
+		try {
+			this.image = ImageIO.read(new File(url));
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-	private Image image;
-	public Sprite(String url){
-		
-	}
-	
-	public Image getImage(){
-		return this.image;
-		
-	}
+
+public Image getImage() {
+	return this.image;
+}
 }

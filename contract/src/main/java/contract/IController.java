@@ -10,7 +10,7 @@ public interface IController {
 	/**
 	 * Control.
 	 */
-	public void control();
+	//public void control();
 
 	/**
 	 * Order perform.
@@ -18,5 +18,5 @@ public interface IController {
 	 * @param controllerOrder
 	 *          the controller order
 	 */
-	public void orderPerform(ControllerOrder controllerOrder);
+	//public void orderPerform(ControllerOrder controllerOrder);
 }
