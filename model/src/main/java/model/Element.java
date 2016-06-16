@@ -18,7 +18,7 @@ public class Element implements IElement {
 		this.setPermeability(permeability);
 	}
 
-	/* (non-Javadoc) coucou
+	/* (non-Javadoc)
 	 * @see model.IElement#getX()
 	 */
 	public int getX() {
