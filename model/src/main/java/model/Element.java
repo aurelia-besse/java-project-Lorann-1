@@ -2,15 +2,16 @@ package model;
 
 import java.awt.Image;
 
+
 import contract.IElement;
 import contract.IPermeability;
 import contract.ISprite;
 
 public class Element implements IElement {
-	private int x, y;
+	public int x, y;
 	private IPermeability permeability;
 	private ISprite sprite;
-	
+
 
 	public Element(IPermeability permeability, ISprite sprite){
 		this.setSprite(sprite);
@@ -21,7 +22,7 @@ public class Element implements IElement {
 	 * @see model.IElement#getX()
 	 */
 	public int getX() {
-		return x;
+		return this.x;
 	}
 
 	public void setX(int x) {
@@ -32,7 +33,7 @@ public class Element implements IElement {
 	 * @see model.IElement#getY()
 	 */
 	public int getY() {
-		return y;
+		return this.y;
 	}
 
 	public void setY(int y) {
