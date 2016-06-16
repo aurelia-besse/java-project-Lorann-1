@@ -8,6 +8,12 @@ public class Map {
 	private int height;
 	private Element		elements[][];
 	private ArrayList<MobileElement> mobiles = new ArrayList<MobileElement>();
+	
+	public Map(int width, int height){
+		this.width = width;
+		this.height = height;
+		this.elements = new Element[this.getWidth()][this.getHeight()];
+	}
 	public int getWidth() {
 		return width;
 	}
@@ -33,6 +39,17 @@ public class Map {
 		mobiles.add(mobile);
 	}
 
+	public Element getElement( int x,  int y) {
+		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
+			return null;
+		}
+		return this.elements[x][y];
+	}
+	
+	public void addElement(Element element, final int x, final int y) {
+		this.elements[x][y] = element;
+		
+	}
 	
 	
 }

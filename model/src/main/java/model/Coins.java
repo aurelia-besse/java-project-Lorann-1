@@ -1,7 +1,9 @@
 package model;
 
 public class Coins extends Loot {
-	public Coins ( String url, Permeability permeability){
+	
+
+	public Coins(int x, int y, String url) {
 		super(url,Permeability.BLOCKING);
 	}
 }
