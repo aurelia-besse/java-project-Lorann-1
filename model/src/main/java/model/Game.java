@@ -36,7 +36,7 @@ public class Game extends Observable implements IGame {
 				System.out.println(url);
 				switch(id){
 				case 1: case 2: case 3:
-					map.addElement(new Wall(x, y, url), x, y);
+					map.addElement(new Wall(x, y,url), x, y);
 					break;
 				case 4:
 					map.addElement(new BubbleKey(x, y, url), x, y);
