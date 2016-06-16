@@ -1,6 +1,8 @@
 package model;
 
-public class Coins extends Loot {
+import contract.ICoins;
+
+public class Coins extends Loot implements ICoins {
 	
 
 	public Coins(int x, int y, String url) {

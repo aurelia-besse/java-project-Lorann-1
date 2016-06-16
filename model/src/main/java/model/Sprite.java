@@ -6,7 +6,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public class Sprite {
+import contract.ISprite;
+
+public class Sprite implements ISprite {
 private Image image;
 public Sprite( final String url) {
 		
@@ -18,6 +20,9 @@ public Sprite( final String url) {
 	}
 
 
+/* (non-Javadoc)
+ * @see model.ISprite#getImage()
+ */
 public Image getImage() {
 	return this.image;
 }

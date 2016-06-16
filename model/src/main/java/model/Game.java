@@ -4,18 +4,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import contract.IGame;
+import contract.IMap;
 import contract.IModel;
 
-public class Game extends Observable {
+public class Game extends Observable implements IGame {
 
-	private Map map;
+	private IMap map;
 	private DBGame dbgame;
 
 	public Game(){
 		dbgame = new DBGame();
 		initMap();
 	}
-	public Map getMap() {
+	/* (non-Javadoc)
+	 * @see model.IGame#getMap()
+	 */
+	public IMap getMap() {
 		return map;
 	}
 	
@@ -60,6 +65,9 @@ public class Game extends Observable {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see model.IGame#getObservable()
+	 */
 	public Observable getObservable() {
 		// TODO Auto-generated method stub
 		return null;

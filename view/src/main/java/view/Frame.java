@@ -1,22 +1,30 @@
-package model;
+package view;
 
 import javax.swing.JFrame;
 
-public class Frame extends JFrame{
+import contract.IFrame;
+import contract.IGame;
+
+public class Frame extends JFrame implements IFrame{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2773168040909497332L;
-	public static final int WIDTH = 646, HEIGHT = 412;
 	private Panel panel;
-	public Frame(){
+	int HEIGHT = 412;
+	int WIDTH = 646;
+	IGame game;
+	
+	public Frame(IGame game){
+		this.game = game;
 		this.setTitle("Lorann");
-		this.setSize(WIDTH, HEIGHT);
+		this.setSize(IFrame.WIDTH, IFrame.HEIGHT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
-		panel = new Panel();
+		panel = new Panel(this);
 		this.getContentPane().add(panel);
 		this.setVisible(true);
 	}
+	
 }

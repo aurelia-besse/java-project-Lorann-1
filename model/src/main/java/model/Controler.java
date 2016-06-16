@@ -1,9 +1,11 @@
 package model;
 
+import contract.IGame;
+
 public class Controler {
 
-	private Game model;
-	public Controler(Game model){
+	private IGame model;
+	public Controler(IGame model){
 		this.model = model;
 	}
 }

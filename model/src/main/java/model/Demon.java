@@ -1,6 +1,8 @@
 package model;
 
-public class Demon extends MobileElement {
+import contract.IDemon;
+
+public class Demon extends MobileElement implements IDemon {
 	
 	public Demon(int x, int y, String url) {
 		super(url,Permeability.PENETRABLE);
