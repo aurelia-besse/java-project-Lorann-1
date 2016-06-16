@@ -8,7 +8,7 @@ public class TestGame {
 
 	@Test
 	public void testGetMap() {
-		fail("Not yet implemented");
+
 	}
 
 	@Test
