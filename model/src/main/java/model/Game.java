@@ -8,7 +8,7 @@ import contract.IModel;
 
 public class Game extends Observable {
 
-	private Map map;
+	public Map map;
 	private DBGame dbgame;
 
 	public Game(){
