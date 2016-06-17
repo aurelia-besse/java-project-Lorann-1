@@ -4,9 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import model.DBGame;
-import model.Map;
-
 public class TestGame {
 
 	@Test

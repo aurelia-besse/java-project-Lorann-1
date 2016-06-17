@@ -1,13 +1,16 @@
-package model;
+package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JPanel;
+
+import contract.*;
+
+
 
 public class Panel extends JPanel implements Observer{
 
@@ -15,54 +18,48 @@ public class Panel extends JPanel implements Observer{
 	 * 
 	 */
 	private static final long serialVersionUID = 508369234136358064L;
-	private Game game;
-	private Controler control;
 	
-	public Panel(){
+	Frame frame;
+	
+	public Panel(Frame frame){
+		this.frame = frame;
 		this.setBackground(new Color(255,0,255));
-		
-		
-		
-		
-		game = new Game();
-		game.addObserver(this);
-		control = new Controler(game);
-	
+		frame.game.addObserver(this);
 		
 	}
 	
 	public void paintComponent(Graphics g){
 		clearAll(g);
 		int x = 0;
-		for(Element[] e : game.getMap().getElements()){
+		for(IElement[] e : frame.game.getMap().getElements()){
 			int y = 0;
-			for(Element element : e){
+			for(IElement element : e){
 					
-					if(element instanceof Wall){
+					if(element instanceof IWall){
 					
 						design(g, element.getSprite().getImage(), x, y);
 						
-					}else if(element instanceof BubbleKey){
+					}else if(element instanceof IBubbleKey){
 						
 						design(g, element.getSprite().getImage(), x, y);
 						
-					}else if(element instanceof Coins){
+					}else if(element instanceof ICoins){
 						
 						design(g, element.getSprite().getImage(), x, y);
 						
-					}else if(element instanceof Door){
+					}else if(element instanceof IDoor){
 						
 						design(g, element.getSprite().getImage(), x, y);
 						
-					}else if(element instanceof Demon){
+					}else if(element instanceof IDemon){
 						
 						design(g, element.getSprite().getImage(), x, y);
 						
-					}else if(element instanceof Lorann){
+					}else if(element instanceof ILorann){
 						
 						design(g, element.getSprite().getImage(), x, y);
 						
-					}else if(element instanceof Floor){
+					}else if(element instanceof IFloor){
 						
 						design(g, element.getSprite().getImage(), x, y);
 						
@@ -73,7 +70,8 @@ public class Panel extends JPanel implements Observer{
 			x++;
 			
 		} 
-	
+		design(g, frame.game.getMap().getHero().getSprite().getImage(),frame.game.getMap().getHero().getX(), frame.game.getMap().getHero().getY());
+		
 	}
 
 	private void design(Graphics g, Image image, int x, int y) {
@@ -82,7 +80,7 @@ public class Panel extends JPanel implements Observer{
 	
 	private void clearAll(Graphics g) {
 		g.setColor(Color.white);
-		g.fillRect(0, 0, Frame.WIDTH, Frame.HEIGHT);
+		g.fillRect(0, 0, IFrame.WIDTH, IFrame.HEIGHT);
 	}
 	
 	public void update(Observable o, Object arg) {

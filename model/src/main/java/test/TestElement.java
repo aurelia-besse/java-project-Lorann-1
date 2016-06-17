@@ -2,11 +2,9 @@ package test;
 
 import static org.junit.Assert.*;
 
-import javax.swing.text.html.parser.Element;
-
 import org.junit.Test;
 
-import model.Permeability;
+import contract.Permeability;
 
 public class TestElement {
 
