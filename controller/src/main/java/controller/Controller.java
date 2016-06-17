@@ -59,6 +59,11 @@ public class Controller implements IController {
 		this.model = model;
 	}
 
+	public void orderPerform(ControllerOrder keyCodeToControllerOrder) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
