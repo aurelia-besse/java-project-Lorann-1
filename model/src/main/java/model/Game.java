@@ -4,9 +4,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import contract.IElement;
 import contract.IGame;
 import contract.IMap;
 import contract.IModel;
+import contract.ISpell;
+import contract.SpellState;
 
 public class Game extends Observable implements IGame {
 
@@ -15,6 +18,7 @@ public class Game extends Observable implements IGame {
 
 	public Game(){
 		dbgame = new DBGame();
+		
 		initMap();
 	}
 	/* (non-Javadoc)
@@ -68,6 +72,14 @@ public class Game extends Observable implements IGame {
 	public void change(){
 	setChanged();
 	notifyObservers();
+	}
+	
+	public void addSpells(IElement hero){
+		getMap().setSpell(new Spell(hero.getX(),hero.getY(),"D:/java project Lorann 1/sprite/fireball_1.png"));
+	}
+	
+	public void addFloor(IElement hero, int x ,int y){
+		getMap().addElement(new Floor(hero.getX(),hero.getY(),"D:/java project Lorann 1/sprite/floor.png"),x,y);
 	}
 
 	/* (non-Javadoc)

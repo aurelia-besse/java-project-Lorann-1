@@ -21,5 +21,9 @@ public interface IMap {
 	public IElement getHero();
 	
 	public void setHero(IElement hero);
+	
+	public IElement getSpell();
+	
+	public void setSpell(IElement spell);
 
 }

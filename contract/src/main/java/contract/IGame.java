@@ -14,4 +14,8 @@ public interface IGame {
 	void addObserver(Observer observer);
 	
 	public void change();
+	
+	public void addSpells(IElement hero);
+	
+	public void addFloor(IElement hero, int x ,int y);
 }

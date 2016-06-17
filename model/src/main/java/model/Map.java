@@ -13,6 +13,7 @@ public class Map implements IMap {
 	private IElement		elements[][];
 	private ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
 	private IElement hero;
+	private IElement spell;
 	
 	public Map(int width, int height){
 		this.width = width;
@@ -82,6 +83,13 @@ public class Map implements IMap {
 	public void setHero(IElement hero) {
 		this.hero = hero;
 	}
+	public IElement getSpell() {
+		return spell;
+	}
+	public void setSpell(IElement spell) {
+		this.spell = spell;
+	}
+	
 	
 	
 	

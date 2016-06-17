@@ -6,4 +6,5 @@ public interface IControler {
 
 	public void keyEvents(KeyEvent e);
 	public void moveDemon();
+
 }
