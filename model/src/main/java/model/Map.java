@@ -10,9 +10,9 @@ public class Map implements IMap {
 
 	private int width;
 	private int height;
-	private IElement		elements[][];
-	private ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
-	private IElement hero;
+	public IElement elements[][];
+	public ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
+	public IElement hero;
 	
 	public Map(int width, int height){
 		this.width = width;
@@ -41,7 +41,7 @@ public class Map implements IMap {
 	 * @see model.IMap#getElements()
 	 */
 	public IElement[][] getElements() {
-		return elements;
+		return this.elements;
 	}
 	public void setElements(IElement[][] elements) {
 		this.elements = elements;
@@ -50,7 +50,7 @@ public class Map implements IMap {
 	 * @see model.IMap#getMobiles()
 	 */
 	public ArrayList<IMobileElement> getMobiles() {
-		return mobiles;
+		return this.mobiles;
 	}
 	/* (non-Javadoc)
 	 * @see model.IMap#addMobiles(model.MobileElement)
@@ -86,8 +86,4 @@ public class Map implements IMap {
 	public void setHero(IElement hero) {
 		this.hero = hero;
 	}
-	
-	
-	
-	
 }

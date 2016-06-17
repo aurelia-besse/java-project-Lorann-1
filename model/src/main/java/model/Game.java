@@ -6,7 +6,7 @@ import java.util.Observable;
 
 import contract.IGame;
 import contract.IMap;
-import contract.IModel;
+
 
 public class Game extends Observable implements IGame {
 
@@ -14,8 +14,9 @@ public class Game extends Observable implements IGame {
 	private DBGame dbgame;
 
 	public Game(){
+		int numbermap = 1;
 		dbgame = new DBGame();
-		initMap();
+		initMap(numbermap);
 	}
 	/* (non-Javadoc)
 	 * @see model.IGame#getMap()
@@ -24,10 +25,10 @@ public class Game extends Observable implements IGame {
 		return map;
 	}
 	
-	public void initMap(){
+	public void initMap(int numbermap){
 		map = new Map(20,12);
 		try {
-			ResultSet result = dbgame.procedure("{call elementMap(?)}", 1);
+			ResultSet result = dbgame.procedure("{call elementMap(?)}", numbermap);
 			while(result.next()){
 				int x = result.getInt("x");
 				int y = result.getInt("y");

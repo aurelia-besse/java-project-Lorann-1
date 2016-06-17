@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import contract.IMap;
+
 public class TestGame {
 
 	@Test
@@ -16,11 +18,11 @@ public class TestGame {
 
 	@Test
 	public void testInitMap() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetObservable() {
-		fail("Not yet implemented");
+		model.Game game = new model.Game();
+		game.initMap(1);
+		IMap map1 = game.getMap();
+		game.initMap(3);
+		IMap map2 = game.getMap();
+		assertNotSame(map1, map2);
 	}
 }
