@@ -17,11 +17,6 @@ public abstract class essaiMain {
 			IGame game = new Game();
 			IFrame frame = new Frame(game);
 			IControler control = new Controler(game,frame);
-			frame.setControler(control);
-			
-			
-			
+			frame.setControler(control);	
 		}
-	
-
 }

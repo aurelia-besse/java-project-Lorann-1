@@ -7,12 +7,29 @@ import contract.IElement;
 import contract.IPermeability;
 import contract.ISprite;
 
+/**
+* <p>
+* The Element class introduces elements based on 3 criteria :
+* <ul>
+* <li>An x and y coordinates to locate on a map at the start of the game.</li>
+* <li>A url to connect the various images format . png.</li>
+* <li>And a list to give him a permeability or not.</li>
+* </ul>
+* </p>
+* 
+* @author Arthur
+ */
 public class Element implements IElement {
 	public int x, y;
 	private IPermeability permeability;
 	private ISprite sprite;
 
-
+/**
+ * @param permeability
+ *				Update the permeability	 for the item
+ * @param sprite
+ * 				Update the sprite for the item
+ */
 	public Element(IPermeability permeability, ISprite sprite){
 		this.setSprite(sprite);
 		this.setPermeability(permeability);

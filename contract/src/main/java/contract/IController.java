@@ -7,6 +7,8 @@ package contract;
  */
 public interface IController {
 
+	void orderPerform(ControllerOrder keyCodeToControllerOrder);
+
 	/**
 	 * Control.
 	 */

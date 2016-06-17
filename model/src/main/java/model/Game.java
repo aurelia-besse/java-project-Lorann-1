@@ -7,7 +7,6 @@ import java.util.Observable;
 import contract.IGame;
 import contract.IMap;
 
-
 public class Game extends Observable implements IGame {
 
 	public IMap map;
