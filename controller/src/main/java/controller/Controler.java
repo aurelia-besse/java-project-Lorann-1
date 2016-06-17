@@ -7,6 +7,7 @@ import contract.IElement;
 import contract.IFrame;
 import contract.IGame;
 import contract.ILorann;
+import contract.IMobileElement;
 import contract.Permeability;
 import contract.LorannState;
 
@@ -17,6 +18,8 @@ public class Controler implements IControler {
 	public Controler(IGame model, IFrame frame){
 		this.model = model;
 		this.frame = frame;
+		Thread t = new Thread(new Ticks(this));
+		t.start();
 	}
 	
 	
@@ -26,8 +29,8 @@ public class Controler implements IControler {
 				
 				
 	}
-	public void keyEvents(KeyEvent lol){
-		switch(lol.getKeyCode()){
+	public void keyEvents(KeyEvent e){
+		switch(e.getKeyCode()){
 			case KeyEvent.VK_UP : case KeyEvent.VK_A :
 				moveLorann(1);
 				break;
@@ -48,38 +51,56 @@ public class Controler implements IControler {
 	
 	
 	public void moveLorann(int state){
-		IElement Lorann = model.getMap().getHero();
+		IElement lorann = model.getMap().getHero();
 
-		int x = Lorann.getX();
-		int y = Lorann.getY();
+		int x = lorann.getX();
+		int y = lorann.getY();
 		
 		switch(state){
 			case 1:
-				((ILorann)Lorann).setState(LorannState.UP);
-				if(!getBlocked(Lorann.getX(), Lorann.getY()-1)){
-					Lorann.setPosition(x, y-1);
+				((ILorann)lorann).setState(LorannState.UP);
+				if(!getBlocked(lorann.getX(),lorann.getY()-1)){
+					lorann.setPosition(x, y-1);
 				}
 				break;
 			case 2:
-				((ILorann)Lorann).setState(LorannState.DOWN);
+				((ILorann)lorann).setState(LorannState.DOWN);
 				if(!getBlocked(x, y +1)){
-					Lorann.setPosition(x, y+1);	
+					lorann.setPosition(x, y+1);	
 				}
 				break;
 			case 3:
-				((ILorann)Lorann).setState(LorannState.RIGHT);
+				((ILorann)lorann).setState(LorannState.RIGHT);
+				lorann.getSprite().setImage("D:/java project Lorann 1/sprite/lorann_r.png");
 				if(!getBlocked(x + 1, y)){
-					Lorann.setPosition(x +1, y);
+					lorann.setPosition(x +1, y);
 				}
 				break;
 			case 4:
-				((ILorann)Lorann).setState(LorannState.LEFT);
+				((ILorann)lorann).setState(LorannState.LEFT);
 				if(!getBlocked(x - 1, y)){
-					Lorann.setPosition(x - 1, y);
+					lorann.setPosition(x - 1, y);
 				}
 				break;
 				
 		}model.change();
+	}
+	
+	public void moveDemon(){
+		for(IMobileElement demon : model.getMap().getMobiles()){
+			double random = Math.random();
+			int x = ((IElement)demon).getX();
+			int y = ((IElement)demon).getY();
+			if(random <= .25d && !getBlocked(x,y -1)){
+				((IElement)demon).setPosition(x, y -1);
+			}else if (random <= .50d && !getBlocked(x,y +1)){
+				((IElement)demon).setPosition(x, y +1);
+			}else if (random <= .75d && !getBlocked(x -1,y )){
+				((IElement)demon).setPosition(x -1,y);
+			}else if (random <= .75d && !getBlocked(x +1,y )){
+				((IElement)demon).setPosition(x +1,y);
+		}
+	}model.change();
 	}
 	
 	

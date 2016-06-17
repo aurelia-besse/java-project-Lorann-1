@@ -27,7 +27,7 @@ public class Game extends Observable implements IGame {
 	public void initMap(){
 		map = new Map(20,12);
 		try {
-			ResultSet result = dbgame.procedure("{call elementMap(?)}", 1);
+			ResultSet result = dbgame.procedure("{call elementMap(?)}", 4);
 			while(result.next()){
 				int x = result.getInt("x");
 				int y = result.getInt("y");

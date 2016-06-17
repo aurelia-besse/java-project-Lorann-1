@@ -55,7 +55,7 @@ public class Map implements IMap {
 	/* (non-Javadoc)
 	 * @see model.IMap#addMobiles(model.MobileElement)
 	 */
-	public void addMobiles(MobileElement mobile) {
+	public void addMobiles(IMobileElement mobile) {
 		mobiles.add(mobile);
 	}
 
@@ -74,10 +74,6 @@ public class Map implements IMap {
 	 */
 	public void addElement(IElement element, final int x, final int y) {
 		this.elements[x][y] = element;
-		
-	}
-	public void addMobiles(IMobileElement mobile) {
-		// TODO Auto-generated method stub
 		
 	}
 	public IElement getHero() {

@@ -26,4 +26,15 @@ public Sprite( final String url) {
 public Image getImage() {
 	return this.image;
 }
+
+public void setImage(String url)
+{
+	try {
+		this.image = ImageIO.read(new File(url));
+	} catch (final IOException e) {
+		e.printStackTrace();
+	}
+}
+
+
 }
