@@ -8,7 +8,7 @@ import contract.IFrame;
 import contract.IGame;
 import contract.ILorann;
 import contract.Permeability;
-import contract.State;
+import contract.LorannState;
 
 public class Controler implements IControler {
 
@@ -19,12 +19,9 @@ public class Controler implements IControler {
 		this.frame = frame;
 	}
 	
-	private IElement getElement(final int x, final int y){
-		return model.getMap().getElement(x, y);
-	}
+	
 	private boolean getBlocked(int x, int y){
-		System.out.println("bonjour");
-		return getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
+		return model.getMap().getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
 		
 				
 				
@@ -58,25 +55,25 @@ public class Controler implements IControler {
 		
 		switch(state){
 			case 1:
-				((ILorann)Lorann).setState(State.UP);
+				((ILorann)Lorann).setState(LorannState.UP);
 				if(!getBlocked(Lorann.getX(), Lorann.getY()-1)){
 					Lorann.setPosition(x, y-1);
 				}
 				break;
 			case 2:
-				((ILorann)Lorann).setState(State.DOWN);
+				((ILorann)Lorann).setState(LorannState.DOWN);
 				if(!getBlocked(x, y +1)){
 					Lorann.setPosition(x, y+1);	
 				}
 				break;
 			case 3:
-				((ILorann)Lorann).setState(State.RIGHT);
+				((ILorann)Lorann).setState(LorannState.RIGHT);
 				if(!getBlocked(x + 1, y)){
 					Lorann.setPosition(x +1, y);
 				}
 				break;
 			case 4:
-				((ILorann)Lorann).setState(State.LEFT);
+				((ILorann)Lorann).setState(LorannState.LEFT);
 				if(!getBlocked(x - 1, y)){
 					Lorann.setPosition(x - 1, y);
 				}

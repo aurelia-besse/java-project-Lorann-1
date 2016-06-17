@@ -1,6 +1,6 @@
 package contract;
 
 public interface ILorann {
-	public State getState() ;
-	public void setState(State state);
+	public LorannState getState() ;
+	public void setState(LorannState state);
 }

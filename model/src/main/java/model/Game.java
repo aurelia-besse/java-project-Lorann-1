@@ -48,7 +48,7 @@ public class Game extends Observable implements IGame {
 					map.setHero(new Lorann(x, y, url));
 					break;
 				case 8: case 9 : case 10: case 11:
-					map.addElement(new Demon(x, y, url), x, y);
+					map.addMobiles(new Demon(x, y, url));
 					break;
 				case 12:
 					map.addElement(new Coins(x, y, url), x, y);

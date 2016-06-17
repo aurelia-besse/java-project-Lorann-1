@@ -2,10 +2,10 @@ package model;
 
 import contract.ILorann;
 import contract.Permeability;
-import contract.State;
+import contract.LorannState;
 
 public class Lorann extends MobileElement implements ILorann {
-	private State state = State.DOWN;
+	private LorannState state = LorannState.DOWN;
 	
 	public Lorann ( int x, int y, String url){
 		super(url,Permeability.PENETRABLE);
@@ -14,10 +14,10 @@ public class Lorann extends MobileElement implements ILorann {
 	}
 
 
-public State getState() {
+public LorannState getState() {
 	return state;
 }
-public void setState(State state) {
+public void setState(LorannState state) {
 	this.state = state;
 	//getSprite().setAnimated(state.ordinal());
 	

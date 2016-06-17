@@ -1,6 +1,6 @@
 package contract;
 
-public enum State {
+public enum LorannState {
 
 	UP, DOWN, LEFT, RIGHT;
 }
