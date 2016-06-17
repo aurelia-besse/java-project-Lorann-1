@@ -70,10 +70,10 @@ public class Panel extends JPanel implements Observer{
 			x++;
 			
 		} 
-		design(g, frame.game.getMap().getHero().getSprite().getImage(),frame.game.getMap().getHero().getX(), frame.game.getMap().getHero().getY());
 		for(IMobileElement demon : frame.game.getMap().getMobiles()){
-			design(g, demon.getSprite.getImage, demon.getX(),demon.getY());
+			design(g, ((IElement)demon).getSprite().getImage(), ((IElement)demon).getX(),((IElement)demon).getY());
 		}
+		design(g, frame.game.getMap().getHero().getSprite().getImage(),frame.game.getMap().getHero().getX(), frame.game.getMap().getHero().getY());
 	}
 
 	private void design(Graphics g, Image image, int x, int y) {
