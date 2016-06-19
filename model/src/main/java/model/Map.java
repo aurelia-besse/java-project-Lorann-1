@@ -2,9 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import contract.IElement;
-import contract.IMap;
-import contract.IMobileElement;
+import contract.*;
 
 /**
 *<b>The Map class represents the whole map</b>

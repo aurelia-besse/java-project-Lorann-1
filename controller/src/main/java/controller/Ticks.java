@@ -6,7 +6,6 @@ import contract.ITicks;
 public class Ticks implements Runnable, ITicks{
 
 	private IControler controler;
-	private long ticks;
 	public Ticks( IControler controler){
 		this.controler = controler;
 		
@@ -17,12 +16,12 @@ public class Ticks implements Runnable, ITicks{
 	public void run() {
 		try{
 			while(true){
-				
+				controler.update();
 				try{
 				
 			
-				controler.moveDemon();
-				Thread.sleep(170);
+				
+				Thread.sleep(120);
 				}catch(Exception e){e.printStackTrace();}
 				
 			}

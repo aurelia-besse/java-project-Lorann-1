@@ -36,6 +36,16 @@ public class Lorann extends MobileElement implements ILorann {
 		setX(x);
 		setY(y);
 		spellstate = SpellState.NotThrow;
+		String images[] = {
+				"sprite/lorann_b.png",
+                "sprite/lorann_br.png",
+                "sprite/lorann_r.png",
+                "sprite/lorann_ur.png",
+                "sprite/lorann_u.png",
+                "sprite/lorann_ul.png",
+                "sprite/lorann_l.png",
+                "sprite/lorann_bl.png"};
+        this.sprite = new AnimateSprite(url,images);
 	}
 
 	/**

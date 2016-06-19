@@ -1,11 +1,8 @@
 package controller;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
-import javax.imageio.ImageIO;
+import java.awt.event.KeyEvent;
+
 
 import contract.*;
 
@@ -152,7 +149,7 @@ public class Controler implements IControler {
 		}
 	}
 	
-	public void moveDemon(){
+	public void moveMobileElement(){
 		try{
 			for(IMobileElement demon : model.getMap().getMobiles()){
 				double random = Math.random();
@@ -165,7 +162,6 @@ public class Controler implements IControler {
 				}
 				if(random <= .25d && !getBlocked(x,y -1)){
 					((IElement)demon).setPosition(x, y -1);
-
 				}else if (random <= .50d && !getBlocked(x,y +1)){
 					((IElement)demon).setPosition(x, y +1);
 				}else if (random <= .75d && !getBlocked(x -1,y )){
@@ -207,6 +203,19 @@ public class Controler implements IControler {
 	
 		}catch(Exception ex){};
 	
+		
+	}
+	
+	public void update(){
+		moveMobileElement();
+		updateSprites();
+	}
+	
+	private void updateSprites(){
+		((IAnimateSprite)model.getMap().getHero().getSprite()).nextImage();
+		if(model.getMap().getSpell()!=null){
+			((IAnimateSprite)model.getMap().getSpell().getSprite()).nextImage();
+		}
 		
 	}
 	

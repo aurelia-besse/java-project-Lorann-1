@@ -15,6 +15,12 @@ public class Spell extends MobileElement implements ISpell {
 		super(url,Permeability.PENETRABLE);
 		setX(x);
 		setY(y);
+		String images[] = {
+				"sprite/fireball_1.png",
+                "sprite/fireball_2.png",
+                "sprite/fireball_3.png",
+                "sprite/fireball_4.png"};
+        this.sprite = new AnimateSprite(url,images);
 	}
 	/* (non-Javadoc)
 	 * @see model.ISpell#getState()

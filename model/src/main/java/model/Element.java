@@ -22,7 +22,7 @@ import contract.ISprite;
 public class Element implements IElement {
 	public int x, y;
 	private IPermeability permeability;
-	private ISprite sprite;
+	protected ISprite sprite;
 
 /**
  * @param permeability
