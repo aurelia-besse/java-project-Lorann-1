@@ -61,6 +61,8 @@ public class Element implements IElement {
 		this.x = x;
 		this.y = y;
 	}
+	
+	
 
 	/* (non-Javadoc)
 	 * @see model.IElement#getPermeability()

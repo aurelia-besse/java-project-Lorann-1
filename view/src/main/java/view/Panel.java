@@ -31,6 +31,7 @@ public class Panel extends JPanel implements Observer{
 	public void paintComponent(Graphics g){
 		clearAll(g);
 		int x = 0;
+		
 		for(IElement[] e : frame.game.getMap().getElements()){
 			int y = 0;
 			for(IElement element : e){
@@ -77,6 +78,12 @@ public class Panel extends JPanel implements Observer{
 		if(!((ILorann)frame.game.getMap().getHero()).getPossessionSpell().equals(SpellState.NotThrow)){
 		design(g, frame.game.getMap().getSpell().getSprite().getImage(),frame.game.getMap().getSpell().getX(), frame.game.getMap().getSpell().getY());}
 		design(g, frame.game.getMap().getHero().getSprite().getImage(),frame.game.getMap().getHero().getX(), frame.game.getMap().getHero().getY());
+		if(frame.game.getGamestate().equals(GameState.GAMEOVER)){
+			frame.game.GameOver(g);
+		}else if(frame.game.getGamestate().equals(GameState.Congratulation)){
+			frame.game.Congratulations(g);
+		}
+			
 	}
 
 	private void design(Graphics g, Image image, int x, int y) {

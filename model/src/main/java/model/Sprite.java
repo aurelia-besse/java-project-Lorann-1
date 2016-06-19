@@ -10,10 +10,10 @@ import contract.ISprite;
 
 public class Sprite implements ISprite {
 private Image image;
-public Sprite( final String url) {
+public Sprite( String url) {
 		
 		try {
-			this.image = ImageIO.read(new File(url));
+			this.image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(url));
 		} catch (final IOException e) {
 			e.printStackTrace();
 		}
@@ -30,7 +30,7 @@ public Image getImage() {
 public void setImage(String url)
 {
 	try {
-		this.image = ImageIO.read(new File(url));
+		this.image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(url));
 	} catch (final IOException e) {
 		e.printStackTrace();
 	}

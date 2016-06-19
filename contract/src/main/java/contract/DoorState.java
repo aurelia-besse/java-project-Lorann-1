@@ -1,4 +1,4 @@
-package model;
+package contract;
 
 /**
  * <b>DoorState is an enumerated type.</b>

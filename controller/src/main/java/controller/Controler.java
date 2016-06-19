@@ -1,6 +1,11 @@
 package controller;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 
 import contract.*;
 
@@ -13,6 +18,7 @@ public class Controler implements IControler {
 		this.frame = frame;
 		Thread t = new Thread(new Ticks(this));
 		t.start();
+
 	}
 	
 	
@@ -60,6 +66,7 @@ public class Controler implements IControler {
 			((ISpell)spell).setState(SpellState.RIGHT);
 		}
 	}
+	
 	public void moveLorann(int state){
 		IElement lorann = model.getMap().getHero();
 
@@ -69,43 +76,80 @@ public class Controler implements IControler {
 		switch(state){
 			case 1:
 				((ILorann)lorann).setState(LorannState.UP);
+				BubbleKeycheck(x,y-1,lorann);
+				CoinsCheck(x,y-1,lorann);
+				DoorCheck(x,y-1,lorann);
 				if(!getBlocked(lorann.getX(),lorann.getY()-1)){
 					lorann.setPosition(x, y-1);
-				}else if (model.getMap().getElement(x, y-1) instanceof IBubbleKey || model.getMap().getElement(x, y-1) instanceof ICoins){
-					lorann.setPosition(x, y-1);
-					model.addFloor(lorann, x, y-1);
 				}
 				break;
 			case 2:
 				((ILorann)lorann).setState(LorannState.DOWN);
+				BubbleKeycheck(x,y+1,lorann);
+				CoinsCheck(x,y+1,lorann);
+				DoorCheck(x,y+1,lorann);
 				if(!getBlocked(x, y +1)){
 					lorann.setPosition(x, y+1);	
-				}else if (model.getMap().getElement(x, y+1) instanceof IBubbleKey || model.getMap().getElement(x, y+1) instanceof ICoins){
-					lorann.setPosition(x, y+1);
-					model.addFloor(lorann, x, y+1);
 				}
 				break;
 			case 3:
 				((ILorann)lorann).setState(LorannState.RIGHT);
-				lorann.getSprite().setImage("D:/java project Lorann 1/sprite/lorann_r.png");
+
+				BubbleKeycheck(x+1,y,lorann);
+				CoinsCheck(x+1,y,lorann);
+				DoorCheck(x+1,y,lorann);
 				if(!getBlocked(x + 1, y)){
 					lorann.setPosition(x +1, y);
-				}else if (model.getMap().getElement(x+1, y) instanceof IBubbleKey || model.getMap().getElement(x+1, y) instanceof ICoins){
-					lorann.setPosition(x+1, y);
-					model.addFloor(lorann, x+1, y);
 				}
 				break;
 			case 4:
 				((ILorann)lorann).setState(LorannState.LEFT);
+				BubbleKeycheck(x-1,y,lorann);
+				CoinsCheck(x-1,y,lorann);
+				DoorCheck(x-1,y,lorann);
 				if(!getBlocked(x - 1, y)){
 					lorann.setPosition(x - 1, y);
-				}else if (model.getMap().getElement(x-1, y) instanceof IBubbleKey || model.getMap().getElement(x-1, y) instanceof ICoins){
-					lorann.setPosition(x-1, y);
-					model.addFloor(lorann, x-1, y);
 				}
 				break;
 				
 		}model.change();
+	}
+	
+	private void BubbleKeycheck(int x, int y, IElement lorann){
+		IElement bubblekey = model.getMap().getElement(x, y);
+		if(bubblekey instanceof IBubbleKey){
+			lorann.setPosition(x, y);
+			model.addFloor(lorann, x, y);
+			for(IElement[] e : model.getMap().getElements()){
+				for(IElement element : e){
+					if(element instanceof IDoor){
+						((IDoor)element).setDoorstate(DoorState.OPEN);
+						element.getSprite().setImage("sprite/gate_open.png");
+					}
+				}
+			}
+		}
+	}
+	
+	private void CoinsCheck(int x, int y, IElement lorann){
+		IElement coins = model.getMap().getElement(x, y);
+		if (coins instanceof ICoins){
+			lorann.setPosition(x, y);
+			model.addFloor(lorann, x, y);
+		}
+	}
+	
+	private void DoorCheck(int x, int y, IElement lorann){
+		IElement door = model.getMap().getElement(x, y);
+		if (door instanceof IDoor){
+			if(((IDoor)door).getDoorstate().equals(DoorState.OPEN)){
+				model.setGamestate(GameState.Congratulation);
+				lorann.setPosition(x, y);
+			}else if (((IDoor)door).getDoorstate().equals(DoorState.CLOSE)){
+				model.setGamestate(GameState.GAMEOVER);
+			}
+
+		}
 	}
 	
 	public void moveDemon(){
@@ -114,9 +158,14 @@ public class Controler implements IControler {
 				double random = Math.random();
 				int x = ((IElement)demon).getX();
 				int y = ((IElement)demon).getY();
-				
+				if(((IElement)demon).getX()== model.getMap().getHero().getX() && ((IElement)demon).getY()== model.getMap().getHero().getY()){
+					System.out.println(model.getMap().getHero() + "mort");
+					model.setGamestate(GameState.GAMEOVER);
+
+				}
 				if(random <= .25d && !getBlocked(x,y -1)){
 					((IElement)demon).setPosition(x, y -1);
+
 				}else if (random <= .50d && !getBlocked(x,y +1)){
 					((IElement)demon).setPosition(x, y +1);
 				}else if (random <= .75d && !getBlocked(x -1,y )){
@@ -129,7 +178,7 @@ public class Controler implements IControler {
 			IElement spell = model.getMap().getSpell();
 			int x = spell.getX();
 			int y = spell.getY();
-			
+			contact();
 			if (((ISpell)spell).getState().equals(SpellState.UP)){
 				if(getBlocked(x,y-1)){
 					((ISpell)spell).setState(SpellState.DOWN);
@@ -159,6 +208,23 @@ public class Controler implements IControler {
 		}catch(Exception ex){};
 	
 		
+	}
+	
+	public void contact(){
+		IElement lorann = model.getMap().getHero();
+		IElement spell = model.getMap().getSpell();
+		if(lorann.getX()== spell.getX() && lorann.getY()==spell.getY()){
+			((ILorann)lorann).setPossessionSpell(SpellState.NotThrow);
+			model.getMap().setSpell(null);
+		}
+		for(IMobileElement demon : model.getMap().getMobiles()){
+			if(((IElement)demon).getX()== spell.getX() && ((IElement)demon).getY()== spell.getY()){
+				System.out.println(demon + "mort");
+				model.getMap().getMobiles().remove(demon);
+				model.getMap().setSpell(null);
+				((ILorann)model.getMap().getHero()).setPossessionSpell(SpellState.NotThrow);
+			}
+		}
 	}
 	
 
