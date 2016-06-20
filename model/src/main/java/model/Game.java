@@ -160,7 +160,7 @@ public class Game extends Observable implements IGame {
 	public void Congratulations(Graphics graphics){
 		Image image;
 		try {
-			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/maxresdefault.jpg"));
+			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/you_won.png"));
 			graphics.drawImage(image, 0, 0, null);
 			} catch (IOException e) {
 			e.printStackTrace();
