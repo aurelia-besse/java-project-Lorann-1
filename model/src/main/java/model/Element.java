@@ -4,8 +4,8 @@ import java.awt.Image;
 
 
 import contract.IElement;
-import contract.IPermeability;
 import contract.ISprite;
+import contract.Permeability;
 
 /**
 * <p>
@@ -21,7 +21,7 @@ import contract.ISprite;
  */
 public class Element implements IElement {
 	public int x, y;
-	private IPermeability permeability;
+	private Permeability permeability;
 	protected ISprite sprite;
 
 /**
@@ -30,7 +30,7 @@ public class Element implements IElement {
  * @param sprite
  * 				Update the sprite for the item
  */
-	public Element(IPermeability permeability, ISprite sprite){
+	public Element(Permeability permeability, ISprite sprite){
 		this.setSprite(sprite);
 		this.setPermeability(permeability);
 	}
@@ -67,11 +67,11 @@ public class Element implements IElement {
 	/* (non-Javadoc)
 	 * @see model.IElement#getPermeability()
 	 */
-	public IPermeability getPermeability() {
+	public Permeability getPermeability() {
 		return permeability;
 	}
 
-	public void setPermeability(IPermeability permeability) {
+	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
 

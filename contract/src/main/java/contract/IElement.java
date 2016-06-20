@@ -10,7 +10,7 @@ public interface IElement {
 	
 	public void setPosition(int x, int y);
 
-	public IPermeability getPermeability();
+	public Permeability getPermeability();
 
 	public ISprite getSprite();
 

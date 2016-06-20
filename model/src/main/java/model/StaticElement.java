@@ -1,6 +1,6 @@
 package model;
 
-import contract.IPermeability;
+import contract.Permeability;
 /**
  * <b>This class StaticElement is used to define the mobility of the object</b>
  * <p>
@@ -21,7 +21,7 @@ public class StaticElement extends Element {
  * @param permeability
  * 			Take the stability of the element.
  */
-	public StaticElement ( String url, IPermeability permeability){
+	public StaticElement ( String url, Permeability permeability){
 		super(permeability, new Sprite(url));
 	}
 }

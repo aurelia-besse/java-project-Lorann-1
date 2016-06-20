@@ -19,8 +19,7 @@ public class Panel extends JPanel implements Observer{
 	 */
 	private static final long serialVersionUID = 508369234136358064L;
 	
-	Frame frame;
-	
+	private Frame frame;
 	public Panel(Frame frame){
 		this.frame = frame;
 		this.setBackground(new Color(255,0,255));

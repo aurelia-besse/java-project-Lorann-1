@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.awt.event.KeyEvent;
 
 
@@ -15,7 +14,6 @@ public class Controler implements IControler {
 		this.frame = frame;
 		Thread t = new Thread(new Ticks(this));
 		t.start();
-
 	}
 	
 	
@@ -151,6 +149,14 @@ public class Controler implements IControler {
 	
 	public void moveMobileElement(){
 		try{
+			moveDemon();
+			moveSpell();
+		}catch(Exception ex){};
+	
+		
+	}
+			
+	public void moveDemon(){		
 			for(IMobileElement demon : model.getMap().getMobiles()){
 				double random = Math.random();
 				int x = ((IElement)demon).getX();
@@ -170,7 +176,9 @@ public class Controler implements IControler {
 					((IElement)demon).setPosition(x +1,y);
 				}model.change();	
 			}
-		
+	}
+	
+	public void moveSpell(){
 			IElement spell = model.getMap().getSpell();
 			int x = spell.getX();
 			int y = spell.getY();
@@ -200,16 +208,15 @@ public class Controler implements IControler {
 					spell.setPosition(x-1, y);
 				}
 			}model.change();
-	
-		}catch(Exception ex){};
+	}
 	
 		
-	}
 	
 	public void update(){
 		moveMobileElement();
 		updateSprites();
 	}
+	
 	
 	private void updateSprites(){
 		((IAnimateSprite)model.getMap().getHero().getSprite()).nextImage();

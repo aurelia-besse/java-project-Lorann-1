@@ -1,9 +1,9 @@
 package controller;
 
 import contract.IControler;
-import contract.ITicks;
 
-public class Ticks implements Runnable, ITicks{
+
+public class Ticks implements Runnable{
 
 	private IControler controler;
 	public Ticks( IControler controler){
