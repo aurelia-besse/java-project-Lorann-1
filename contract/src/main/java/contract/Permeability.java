@@ -1,8 +1,13 @@
 package contract;
 
 
-
+/**
+ * The Enum Permeability.
+ * 
+ * @author Arthur
+ */
 public enum Permeability  {
 
-	BLOCKING, PENETRABLE;
+	BLOCKING,/** The object is impenetrable */
+	PENETRABLE; /**The object is penetrable*/
 }

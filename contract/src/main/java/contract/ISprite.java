@@ -1,7 +1,11 @@
 package contract;
 
 import java.awt.Image;
-
+/**
+ *<b>The Interface ISprite.</b> 
+ * @author Aurelia
+ * @version 16.06.2016
+ */
 public interface ISprite {
 
 	/**

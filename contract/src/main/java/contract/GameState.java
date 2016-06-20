@@ -1,6 +1,12 @@
 package contract;
-
+/**
+ * The Enum GameState.
+ * 
+ * @author Arthur
+ */
 public enum GameState {
 
-	GAMEOVER, OK, Congratulation;
+	GAMEOVER, /** You loose the game */
+	OK, /** Game in progress */
+	Congratulation; /** You win the game */
 }

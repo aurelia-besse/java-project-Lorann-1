@@ -17,5 +17,10 @@ public interface ILorann {
 	public void setState(LorannState state);
 	
 	public SpellState getPossessionSpell();
+	/**
+	 * 
+	 * @param spellstate
+	 * 					Updates where is the spell
+	 */
 	public void setPossessionSpell(SpellState spellstate);
 }
