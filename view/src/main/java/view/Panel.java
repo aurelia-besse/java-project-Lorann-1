@@ -85,9 +85,9 @@ public class Panel extends JPanel implements Observer{
 		if(!((ILorann)frame.game.getMap().getLorann()).getPossessionSpell().equals(SpellState.NotThrow)){
 		design(g, frame.game.getMap().getSpell().getSprite().getImage(),frame.game.getMap().getSpell().getX(), frame.game.getMap().getSpell().getY());}
 		design(g, frame.game.getMap().getLorann().getSprite().getImage(),frame.game.getMap().getLorann().getX(), frame.game.getMap().getLorann().getY());
-		if(frame.game.getGamestate().equals(GameState.GAMEOVER)){
+		if(frame.game.getGameState().equals(GameState.GAMEOVER)){
 			frame.game.GameOver(g);
-		}else if(frame.game.getGamestate().equals(GameState.Congratulation)){
+		}else if(frame.game.getGameState().equals(GameState.Congratulation)){
 			frame.game.Congratulations(g);
 		}
 			

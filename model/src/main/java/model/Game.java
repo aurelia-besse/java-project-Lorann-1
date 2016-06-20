@@ -26,11 +26,11 @@ public class Game extends Observable implements IGame {
 
 	private IMap map;
 	private DBGame dbgame;
-	private GameState gamestate;
+	private GameState gameState;
 
 	public Game(){
 		dbgame = new DBGame();
-		gamestate = GameState.OK;
+		gameState = GameState.OK;
 		initMap();
 	}
 	
@@ -99,16 +99,16 @@ public class Game extends Observable implements IGame {
 	 * (non-Javadoc)
 	 * @see contract.IGame#addSpells(contract.IElement)
 	 */
-	public void addSpells(IElement hero){
-		int x =hero.getX();
-		int y =hero.getY();
-		if(((ILorann)hero).getState().equals(LorannState.UP)&& getMap().getElement(x, y-1).getPermeability().equals(Permeability.PENETRABLE)){
+	public void addSpells(IElement lorann){
+		int x =lorann.getX();
+		int y =lorann.getY();
+		if(((ILorann)lorann).getState().equals(LorannState.UP)&& getMap().getElement(x, y-1).getPermeability().equals(Permeability.PENETRABLE)){
 			y --;
-		}else if (((ILorann)hero).getState().equals(LorannState.DOWN)&& getMap().getElement(x, y+1).getPermeability().equals(Permeability.PENETRABLE)){
+		}else if (((ILorann)lorann).getState().equals(LorannState.DOWN)&& getMap().getElement(x, y+1).getPermeability().equals(Permeability.PENETRABLE)){
 			y ++;
-		}else if (((ILorann)hero).getState().equals(LorannState.RIGHT) && getMap().getElement(x+1, y).getPermeability().equals(Permeability.PENETRABLE)){
+		}else if (((ILorann)lorann).getState().equals(LorannState.RIGHT) && getMap().getElement(x+1, y).getPermeability().equals(Permeability.PENETRABLE)){
 			x ++;
-		}else if (((ILorann)hero).getState().equals(LorannState.LEFT) && getMap().getElement(x-1, y).getPermeability().equals(Permeability.PENETRABLE)){
+		}else if (((ILorann)lorann).getState().equals(LorannState.LEFT) && getMap().getElement(x-1, y).getPermeability().equals(Permeability.PENETRABLE)){
 			x --;
 		}
 		getMap().setSpell(new Spell(x,y,"sprite/fireball_1.png"));
@@ -118,24 +118,24 @@ public class Game extends Observable implements IGame {
 	 * (non-Javadoc)
 	 * @see contract.IGame#addFloor(contract.IElement, int, int)
 	 */
-	public void addFloor(IElement hero, int x ,int y){
-		getMap().addElement(new Floor(hero.getX(),hero.getY(),"sprite/floor.png"),x,y);
+	public void addFloor(IElement lorann, int x ,int y){
+		getMap().addElement(new Floor(lorann.getX(),lorann.getY(),"sprite/floor.png"),x,y);
 	}
 	
 	/*
 	 * (non-Javadoc)
 	 * @see contract.IGame#getGamestate()
 	 */
-	public GameState getGamestate() {
-		return gamestate;
+	public GameState getGameState() {
+		return gameState;
 	}
 	
 	/*
 	 * (non-Javadoc)
 	 * @see contract.IGame#setGamestate(contract.GameState)
 	 */
-	public void setGamestate(GameState gamestate) {
-		this.gamestate = gamestate;
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
 	}
 	
 	/*
