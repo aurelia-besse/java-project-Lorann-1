@@ -1,9 +1,9 @@
 package contract;
 
 /**
- * The Enum LorannState.
- * 
+ * <b>The Enum LorannState.</b>
  * @author Arthur
+ * @version 16.06.2016
  */
 public enum LorannState {
 

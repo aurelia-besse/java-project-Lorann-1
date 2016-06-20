@@ -21,7 +21,7 @@ import contract.LorannState;
 public class Lorann extends MobileElement implements ILorann {
 	
 	private LorannState state = LorannState.DOWN;
-	private SpellState spellstate;
+	private SpellState spellState;
 	
 	/**
 	 * Initialize Lorann and characteristics of Lorann 
@@ -38,7 +38,7 @@ public class Lorann extends MobileElement implements ILorann {
 		super(url,Permeability.PENETRABLE);
 		setX(x);
 		setY(y);
-		spellstate = SpellState.NotThrow;
+		spellState = SpellState.NotThrow;
 		String images[] = {
 				"sprite/lorann_b.png",
                 "sprite/lorann_br.png",
@@ -73,15 +73,15 @@ public class Lorann extends MobileElement implements ILorann {
 	 * @see contract.ILorann#getPossessionSpell()
 	 */
 	public SpellState getPossessionSpell() {
-		return spellstate;
+		return spellState;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see contract.ILorann#setPossessionSpell(contract.SpellState)
 	 */
-	public void setPossessionSpell(SpellState spellstate) {
-		this.spellstate = spellstate;
+	public void setPossessionSpell(SpellState spellState) {
+		this.spellState = spellState;
 	}
 	
 	

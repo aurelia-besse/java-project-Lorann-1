@@ -2,9 +2,9 @@ package contract;
 
 
 /**
- * The Enum Permeability.
- * 
+ * <b>The Enum Permeability.</b>
  * @author Arthur
+ * @version 15.06.2016
  */
 public enum Permeability  {
 

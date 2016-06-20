@@ -9,12 +9,16 @@ import contract.SpellState;
  */
 public interface ISpell {
 
+	/**
+	 * Recovers the spell state
+	 * @return the spell state
+	 */
 	SpellState getState();
 
 	/**
-	 * 
+	 * Updates the spell state
 	 * @param state
-	 * 			Update the state of spell
+	 * 			It's a SpellState
 	 */
 	void setState(SpellState state);
 

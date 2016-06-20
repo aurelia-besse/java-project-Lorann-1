@@ -11,9 +11,10 @@ public interface IFrame {
 	int WIDTH = 646;
 	
 	/**
+	 * Method to set the controller
 	 * @param controler
-	 * 				Use the controler
+	 * 				
 	 */
-	public void setControler(IControler controler);
+	public void setController(IController controler);
 
 }
