@@ -13,11 +13,12 @@ import contract.Permeability;
 * <ul>
 * <li>An x and y coordinates to locate on a map at the start of the game.</li>
 * <li>A url to connect the various images format . png.</li>
-* <li>And a list to give him a permeability or not.</li>
+* <li>And a list to give him a permeability.</li>
 * </ul>
 * </p>
 * 
-* @author Arthur
+* @author Aurelia
+* @version 15.06.2016
  */
 public class Element implements IElement {
 	public int x, y;
@@ -57,6 +58,10 @@ public class Element implements IElement {
 		this.y = y;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IElement#setPosition(int, int)
+	 */
 	public void setPosition(int x, int y){
 		this.x = x;
 		this.y = y;
