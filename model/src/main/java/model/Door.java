@@ -19,7 +19,7 @@ import contract.Permeability;
  * @version 17.06.16
  */
 public class Door extends StaticElement implements IDoor {
-	private DoorState doorstate;
+	private DoorState doorState;
 	
 	/**
 	 * Initialize the door
@@ -32,7 +32,7 @@ public class Door extends StaticElement implements IDoor {
 	 */
 	public Door(int x, int y, String url) {
 		super(url,Permeability.BLOCKING);
-		this.doorstate = DoorState.CLOSE;
+		this.doorState = DoorState.CLOSE;
 	}
 
 	/*
@@ -40,15 +40,15 @@ public class Door extends StaticElement implements IDoor {
 	 * @see contract.IDoor#getDoorState()
 	 */
 	public DoorState getDoorState() {
-		return doorstate;
+		return doorState;
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see contract.IDoor#setDoorState(contract.DoorState)
 	 */
-	public void setDoorState(DoorState doorstate) {
-		this.doorstate = doorstate;
+	public void setDoorState(DoorState doorState) {
+		this.doorState = doorState;
 	}
 	
 	

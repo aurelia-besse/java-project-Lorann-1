@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * <b>The Interface IMap.</b>
  * @author Aurelia
- * @version 17.06.16
+ * @version 16.06.16
  */
 public interface IMap {
 

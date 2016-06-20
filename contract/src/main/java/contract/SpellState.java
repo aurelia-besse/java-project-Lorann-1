@@ -1,9 +1,10 @@
 package contract;
 
 /**
- * The Enum SpellState.
+ * <b>The Enum SpellState.</b>
  * 
  * @author Arthur
+ * @version 16.06.2016
  */
 public enum SpellState{
 

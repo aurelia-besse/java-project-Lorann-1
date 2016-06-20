@@ -9,6 +9,7 @@ import java.awt.Image;
 public interface ISprite {
 
 	/**
+	 * Recovers an image
 	 * @return The picture .png
 	 */
 	Image getImage();

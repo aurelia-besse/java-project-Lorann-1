@@ -17,6 +17,7 @@ import contract.Permeability;
 * @version 17.06.16
 */
 public class Wall extends StaticElement implements IWall {
+	
 	/**
 	 * Initialize the wall
 	 * @param x

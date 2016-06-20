@@ -14,7 +14,7 @@ import contract.IMap;
 public interface IGame {
 
 	/**
-	 * Method return a map
+	 * Method to get a map
 	 * @return the map 
 	 */
 	IMap getMap();
@@ -41,7 +41,7 @@ public interface IGame {
 	 * @param hero 
 	 * 			It's an element
 	 */
-	public void addSpells(IElement hero);
+	public void addSpells(IElement lorann);
 	
 	/**
 	 * Adds floor 
@@ -52,20 +52,20 @@ public interface IGame {
 	 * @param y
 	 * 			The y position of the floor on a landmark o,x,y.
 	 */
-	public void addFloor(IElement hero, int x ,int y);
+	public void addFloor(IElement lorann, int x ,int y);
 	
 	/**
 	 * Recovers the game state
 	 * @return the game state 
 	 */
-	public GameState getGamestate();
+	public GameState getGameState();
 	
 	/**
 	 * Updates the game state
 	 * @param gamestate
 	 * 				It's a GameState
 	 */
-	public void setGamestate(GameState gamestate);
+	public void setGameState(GameState gameState);
 	
 	/**
 	 * Displays the defeat ... 

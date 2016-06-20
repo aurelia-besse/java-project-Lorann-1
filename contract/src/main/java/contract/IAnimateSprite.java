@@ -2,8 +2,11 @@ package contract;
 
 import java.awt.Image;
 
-/** To atribuate a picture for Lorann
- * The IAnimateSprite interface*/
+/** 
+ * <b>The interface IAnimateSprite </b>
+ * @author Aurelia
+ * @version 19.06.2016
+ * */
 public interface IAnimateSprite {
 
 	void nextImage();
