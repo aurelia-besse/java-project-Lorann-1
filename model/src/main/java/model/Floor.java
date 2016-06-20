@@ -5,11 +5,11 @@ import contract.Permeability;
 /**
 *<b>The Floor class represents the wallpaper of the game</b>
 * <p>
-* The class Floor consists to create an object Floor with:
+* The class Floor consists to instantiate an object Floor with:
 * <ul>
 * <li>An x and y coordinates to locate on a map.</li>
 * <li>A url to connect the floor to an image format . png.</li>
-* <li>And a list to give him a permeability or not.</li>
+* <li>And a list to give him a permeability.</li>
 * </ul>
 * </p>
 * 
@@ -19,6 +19,7 @@ import contract.Permeability;
 
 public class Floor extends StaticElement implements IFloor{
 	/**
+	 * Initialize the floor
 	 * @param x
 	 * 			The x position of the floor on a landmark o,x,y.
 	 * @param y

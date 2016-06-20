@@ -19,9 +19,12 @@ import contract.LorannState;
 * @version 17.06.16
 */
 public class Lorann extends MobileElement implements ILorann {
+	
 	private LorannState state = LorannState.DOWN;
 	private SpellState spellstate;
+	
 	/**
+	 * Initialize Lorann and characteristics of Lorann 
 	 * @param x
 	 * 			The x position of the character on a landmark o,x,y.
 	 * 			It can be changed by the user during the game.
@@ -48,31 +51,35 @@ public class Lorann extends MobileElement implements ILorann {
         this.sprite = new AnimateSprite(url,images);
 	}
 
-	/**
-	 * Recovers the state of Lorann
-	 * 
-	 * @return The state in which lorann is
-	 */
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.ILorann#getState()
+	 */
 	public LorannState getState() {
 		return state;
 	}
 
-	/**
-	 * Updates the state of Lorann
-	 * 
-	 * @param state 
-	 *			It is the new image of lorann
+	/*
+	 * (non-Javadoc)
+	 * @see contract.ILorann#setState(contract.LorannState)
 	 */
-
 	public void setState(LorannState state) {
 		this.state = state;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see contract.ILorann#getPossessionSpell()
+	 */
 	public SpellState getPossessionSpell() {
 		return spellstate;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see contract.ILorann#setPossessionSpell(contract.SpellState)
+	 */
 	public void setPossessionSpell(SpellState spellstate) {
 		this.spellstate = spellstate;
 	}

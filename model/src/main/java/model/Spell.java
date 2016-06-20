@@ -24,6 +24,7 @@ public class Spell extends MobileElement implements ISpell {
 	private SpellState state;
 	
 	/**
+	 * Initialize the spell and characteristics of spell
 	 * @param x
 	 * 			The x position of the spell on a landmark o,x,y.
 	 * @param y
@@ -42,12 +43,14 @@ public class Spell extends MobileElement implements ISpell {
                 "sprite/fireball_4.png"};
         this.sprite = new AnimateSprite(url,images);
 	}
+	
 	/* (non-Javadoc)
 	 * @see model.ISpell#getState()
 	 */
 	public SpellState getState() {
 		return state;
 	}
+	
 	/* (non-Javadoc)
 	 * @see model.ISpell#setState(contract.SpellState)
 	 */

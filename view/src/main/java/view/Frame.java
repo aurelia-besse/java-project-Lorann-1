@@ -67,10 +67,11 @@ public class Frame extends JFrame implements IFrame, KeyListener{
 	public IControler getControler() {
 		return controler;
 	}
-/**
- * @param controler
- * 				Use the controler
- */
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IFrame#setControler(contract.IControler)
+	 */
 	public void setControler(IControler controler) {
 		this.controler = controler;
 	}

@@ -20,7 +20,7 @@ import contract.*;
 * </p>
 * 
 * @author Aurelia
-* @version 17.06.16
+* @version 16.06.16
 */
 public class Game extends Observable implements IGame {
 
@@ -33,14 +33,15 @@ public class Game extends Observable implements IGame {
 		gamestate = GameState.OK;
 		initMap();
 	}
-	/**
-	 * @return The map of the game
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getMap()
 	 */
 	public IMap getMap() {
 		return map;
 	}
 	/**
-	 * 
 	 *Initializes the game map
 	 */
 	public void initMap(){
@@ -63,10 +64,9 @@ public class Game extends Observable implements IGame {
 				case 6:
 					IElement door = new Door(x, y, url);
 					map.addElement(door, x, y);
-					((IDoor)door).setDoorState(DoorState.CLOSE);
 					break;
 				case 7:
-					map.setHero(new Lorann(x, y,url));
+					map.setLorann(new Lorann(x, y,url));
 					break;
 				case 8: case 9 : case 10: case 11:
 					map.addMobiles(new Demon(x, y, url));
@@ -82,21 +82,22 @@ public class Game extends Observable implements IGame {
 			}
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-/**
- * 
- */
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#change()
+	 */
 	public void change(){
-	setChanged();
-	notifyObservers();
+		setChanged();
+		notifyObservers();
 	}
-	/**
-	 * Create the spell depending on the position of the character
-	 * @param hero 
-	 * 			Represente the hero
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#addSpells(contract.IElement)
 	 */
 	public void addSpells(IElement hero){
 		int x =hero.getX();
@@ -112,36 +113,34 @@ public class Game extends Observable implements IGame {
 		}
 		getMap().setSpell(new Spell(x,y,"sprite/fireball_1.png"));
 	}
-	/**
-	 * Add floor for the game
-	 * @param hero 
-	 * 			This is the Hero
-	 * @param x
-	 * 			The x position of the floor on a landmark o,x,y.
-	 * @param y
-	 * 			The y position of the floor on a landmark o,x,y.
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#addFloor(contract.IElement, int, int)
 	 */
 	public void addFloor(IElement hero, int x ,int y){
 		getMap().addElement(new Floor(hero.getX(),hero.getY(),"sprite/floor.png"),x,y);
 	}
 	
-/**
- * @return Recover the state game
- */
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getGamestate()
+	 */
 	public GameState getGamestate() {
 		return gamestate;
 	}
-	/**
-	 * @param gamestate
-	 * 				Update the Game
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#setGamestate(contract.GameState)
 	 */
 	public void setGamestate(GameState gamestate) {
 		this.gamestate = gamestate;
 	}
-	/**
-	 * Displays the defeat ... 
-	 * @param graphics 
-	 * 			Give the picture for the loose
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#GameOver(java.awt.Graphics)
 	 */
 	public void GameOver(Graphics graphics){
 		Image image;
@@ -151,12 +150,12 @@ public class Game extends Observable implements IGame {
 			} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 	}
-	/**
-	 * Displays the win!
-	 * @param grapihcs
-	 * 				Give the picture for the win
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#Congratulations(java.awt.Graphics)
 	 */
 	public void Congratulations(Graphics graphics){
 		Image image;
@@ -164,16 +163,16 @@ public class Game extends Observable implements IGame {
 			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/maxresdefault.jpg"));
 			graphics.drawImage(image, 0, 0, null);
 			} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
-/**
- * @return Null
- */
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getObservable()
+	 */
 	public Observable getObservable() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

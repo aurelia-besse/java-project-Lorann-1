@@ -7,11 +7,10 @@ import contract.*;
 /**
 *<b>The Map class represents the whole map</b>
 * <p>
-* The class Map consists to create an object with :
+* The class Map consists to instantiate an object with :
 * <ul>
-* <li>A dimension of game window.</li>
-* <li>A variety of different object.</li>
-* <li>The image displacement.</li>
+* <li>A dimension of map.</li>
+* <li>A variety of different element.</li>
 * </ul>
 * </p>
 * 
@@ -24,87 +23,91 @@ public class Map implements IMap {
 	private int height;
 	private IElement		elements[][];
 	private ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
-	private IElement hero;
+	private IElement lorann;
 	private IElement spell;
 	
 	/**
-	 * 
+	 * Initialize the map
 	 * @param width
 	 * 				The width of the map.
 	 * @param height
 	 * 				The height of the map.
 	 */
-	
 	public Map(int width, int height){
 		this.width = width;
 		this.height = height;
 		this.elements = new IElement[this.getWidth()][this.getHeight()];
 	}
 	
-	/**
-	 * @return width 
-	 * 			Recovers the width of the map
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getWidth()
 	 */
 	public int getWidth() {
 		return width;
 	}
+	
 	/**
-	 * 
+	 * Updates the width of the map
 	 * @param width
-	 * 				Updates the width of the map
+	 * 			the width of the map
 	 */
 	public void setWidth(int width) {
 		this.width = width;
 	}
-	/**
-	 * @return height
-	 * 			Recovers the height of the map
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getHeight()
 	 */
 	public int getHeight() {
 		return height;
 	}
-	/**
-	 * 
-	 * @param height
-	 * 			Updates the height of the map
-	 */
 	
+	/**
+	 * Updates the height of the map
+	 * @param the height of the map
+	 */
 	public void setHeight(int height) {
 		this.height = height;
 	}
-	/**
-	 * @return The elements 
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getElements()
 	 */
 	public IElement[][] getElements() {
 		return elements;
 	}
+	
 	/**
-	 * 
+	 * Set the table of elements
 	 * @param elements 
-	 * 				the elements is updated 		
+	 * 						
 	 */
 	public void setElements(IElement[][] elements) {
 		this.elements = elements;
 	}
-	/**
-	 * @return The different mobiles object
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getMobiles()
 	 */
 	public ArrayList<IMobileElement> getMobiles() {
 		return mobiles;
 	}
-	/**
-	 * @param mobile
-	 * 				Add a mobile element
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#addMobiles(contract.IMobileElement)
 	 */
 	public void addMobiles(IMobileElement mobile) {
 		mobiles.add(mobile);
 	}
 
-	/**
-	 * @param x
-	 * 			The x position of the element on a landmark o,x,y.
-	 * @param y
-	 * 			The y position of the element on a landmark o,x,y.
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getElement(int, int)
 	 */
 	public IElement getElement( int x,  int y) {
 		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
@@ -113,38 +116,43 @@ public class Map implements IMap {
 		return this.elements[x][y];
 	}
 	
-	/**
-	 * @param element 
-	 *			It assigns the coordinates to the element
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#addElement(contract.IElement, int, int)
 	 */
-	public void addElement(IElement element, final int x, final int y) {
+	public void addElement(IElement element, int x, int y) {
 		this.elements[x][y] = element;
 		
 	}
-	/**
-	 * @return Retrieve the hero
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getHero()
 	 */
-	public IElement getHero() {
-		return hero;
-	}
-	/**
-	 * @param hero 
-	 * 			The hero is updated
-	 */
-	public void setHero(IElement hero) {
-		this.hero = hero;
+	public IElement getLorann() {
+		return lorann;
 	}
 	
-/**
- * @return Recover the spell
- */
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#setHero(contract.IElement)
+	 */
+	public void setLorann(IElement lorann) {
+		this.lorann = lorann;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#getSpell()
+	 */
 	public IElement getSpell() {
 		return spell;
 	}
-/**
- * @param spell
- * 			Update the spell
- */
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IMap#setSpell(contract.IElement)
+	 */
 	public void setSpell(IElement spell) {
 		this.spell = spell;
 	}

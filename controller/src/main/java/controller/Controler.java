@@ -10,7 +10,7 @@ public class Controler implements IControler {
 	private IGame model;
 	private IFrame frame;
 	/**
-	 * 
+	 * Initialize the controller
 	 * @param model
 	 * 			Use the model
 	 * @param frame
@@ -25,12 +25,12 @@ public class Controler implements IControler {
 	}	
 		
 	/**
-	 * 
+	 * Method that checks if the element is permeable or not
 	 * @param x
 	 * 		The x position on a landmark o,x,y.
 	 * @param y
 	 * 		The y position on a landmark o,x,y.
-	 * @return The permeability or not
+	 * @return A boolean if is blocked
 	 */
 	private boolean getBlocked(int x, int y){
 		return model.getMap().getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
@@ -53,7 +53,7 @@ public class Controler implements IControler {
 				moveLorann(3);
 				break;
 			case KeyEvent.VK_SPACE :
-				IElement lorann = model.getMap().getHero();
+				IElement lorann = model.getMap().getLorann();
 				if(((ILorann)lorann).getPossessionSpell().equals(SpellState.NotThrow)){
 					((ILorann)lorann).setPossessionSpell(SpellState.Throw);
 					model.addSpells(lorann);
@@ -64,9 +64,9 @@ public class Controler implements IControler {
 		}
 		}
 	/**
-	 * 
+	 * Update the state of Spell depending on the state of Lorann
 	 * @param state
-	 * 				Update the state
+	 * 		the state of Lorann
 	 */
 	private void setSpellState(LorannState state){
 		IElement spell = model.getMap().getSpell();
@@ -81,12 +81,12 @@ public class Controler implements IControler {
 		}
 	}
 	/**
-	 * 
+	 * Method to move Lorann in the map
 	 * @param state
-	 * 			Give the state
+	 * 			the state of Lorann
 	 */
 	public void moveLorann(int state){
-		IElement lorann = model.getMap().getHero();
+		IElement lorann = model.getMap().getLorann();
 
 		int x = lorann.getX();
 		int y = lorann.getY();
@@ -135,7 +135,7 @@ public class Controler implements IControler {
 
 
 	/**
-	 * 
+	 * Method that check if the element is a BubbleKey or not
 	 * @param x
 	 * 			The x position of the BubbleKey on a landmark o,x,y.
 	 * @param y
@@ -160,7 +160,7 @@ public class Controler implements IControler {
 		}
 	}
 	/**
-	 * 
+	 * Method that check if the element is a Coin or not
 	 * @param x
 	 * 			The x position of the coins on a landmark o,x,y.
 	 * @param y
@@ -176,7 +176,7 @@ public class Controler implements IControler {
 		}
 	}
 	/**
-	 * 
+	 * Method that check if the element is a Door or not
 	 * @param x
 	 * 			The x position of the door on a landmark o,x,y.
 	 * @param y
@@ -211,8 +211,8 @@ public class Controler implements IControler {
 				double random = Math.random();
 				int x = ((IElement)demon).getX();
 				int y = ((IElement)demon).getY();
-				if(((IElement)demon).getX()== model.getMap().getHero().getX() && ((IElement)demon).getY()== model.getMap().getHero().getY()){
-					System.out.println(model.getMap().getHero() + "mort");
+				if(((IElement)demon).getX()== model.getMap().getLorann().getX() && ((IElement)demon).getY()== model.getMap().getLorann().getY()){
+					System.out.println(model.getMap().getLorann() + "mort");
 					model.setGamestate(GameState.GAMEOVER);
 
 				}
@@ -269,7 +269,7 @@ public class Controler implements IControler {
 	
 	
 	private void updateSprites(){
-		((IAnimateSprite)model.getMap().getHero().getSprite()).nextImage();
+		((IAnimateSprite)model.getMap().getLorann().getSprite()).nextImage();
 		if(model.getMap().getSpell()!=null){
 			((IAnimateSprite)model.getMap().getSpell().getSprite()).nextImage();
 		}
@@ -277,7 +277,7 @@ public class Controler implements IControler {
 	}
 	
 	public void contact(){
-		IElement lorann = model.getMap().getHero();
+		IElement lorann = model.getMap().getLorann();
 		IElement spell = model.getMap().getSpell();
 		if(lorann.getX()== spell.getX() && lorann.getY()==spell.getY()){
 			((ILorann)lorann).setPossessionSpell(SpellState.NotThrow);
@@ -288,7 +288,7 @@ public class Controler implements IControler {
 				System.out.println(demon + "mort");
 				model.getMap().getMobiles().remove(demon);
 				model.getMap().setSpell(null);
-				((ILorann)model.getMap().getHero()).setPossessionSpell(SpellState.NotThrow);
+				((ILorann)model.getMap().getLorann()).setPossessionSpell(SpellState.NotThrow);
 			}
 		}
 	}

@@ -20,6 +20,13 @@ public class AnimateSprite extends Sprite implements IAnimateSprite{
 
 	private Image[] images;
 	private int next;
+	/**
+	 * 
+	 * @param url
+	 *  the default image link
+	 * @param urls
+	 *  this is the set of image links
+	 */
 	public AnimateSprite(String url,String[] urls) {
 		super(url);
 		this.images = new Image[urls.length];

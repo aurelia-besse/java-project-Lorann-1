@@ -20,6 +20,7 @@ import contract.ISprite;
 public class Sprite implements ISprite {
 	
 private Image image;
+
 /**
  * 
  * @param url
@@ -34,14 +35,18 @@ public Sprite( String url) {
 		}
 	}
 
-/**
- * @return The picture .png
+/*
+ * (non-Javadoc)
+ * @see contract.ISprite#getImage()
  */
 public Image getImage() {
 	return this.image;
 }
 
-
+/*
+ * (non-Javadoc)
+ * @see contract.ISprite#setImage(java.lang.String)
+ */
 public void setImage(String url)
 {
 

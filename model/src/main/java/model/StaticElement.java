@@ -19,7 +19,7 @@ public class StaticElement extends Element {
  * @param url
  * 			Take the picture.
  * @param permeability
- * 			Take the stability of the element.
+ * 			Take the permeability of the element.
  */
 	public StaticElement ( String url, Permeability permeability){
 		super(permeability, new Sprite(url));

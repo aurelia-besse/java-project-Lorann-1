@@ -5,11 +5,11 @@ import contract.Permeability;
 /**
 *<b>The Wall class represents the structure of the map</b>
 * <p>
-* The class Wall consists to create an object Wall with:
+* The class Wall consists to instantiate an object Wall with:
 * <ul>
 * <li>An x and y coordinates to locate on a map.</li>
 * <li>A url to connect the wall to an image format . png.</li>
-* <li>And a list to give him a permeability or not.</li>
+* <li>And a list to give him a permeability.</li>
 * </ul>
 * </p>
 * 
@@ -18,6 +18,7 @@ import contract.Permeability;
 */
 public class Wall extends StaticElement implements IWall {
 	/**
+	 * Initialize the wall
 	 * @param x
 	 * 			The x position of the wall on a landmark o,x,y.
 	 * @param y
