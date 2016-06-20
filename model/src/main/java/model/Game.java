@@ -145,7 +145,7 @@ public class Game extends Observable implements IGame {
 	public void GameOver(Graphics graphics){
 		Image image;
 		try {
-			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/maxresdefault.jpg"));
+			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/you_loose.jpg"));
 			graphics.drawImage(image, 0, 0, null);
 			} catch (IOException e) {
 			// TODO Auto-generated catch block
