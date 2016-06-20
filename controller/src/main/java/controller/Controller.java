@@ -5,7 +5,6 @@ import java.awt.event.KeyEvent;
 
 import contract.*;
 /**
- * 
  * @author Aurelia
  * @version 15.06.2016
  */
