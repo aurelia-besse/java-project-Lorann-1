@@ -14,8 +14,7 @@ public class Controler implements IControler {
 		this.frame = frame;
 		Thread t = new Thread(new Ticks(this));
 		t.start();
-	}
-	
+	}	
 	
 	private boolean getBlocked(int x, int y){
 		return model.getMap().getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
@@ -71,7 +70,7 @@ public class Controler implements IControler {
 		switch(state){
 			case 1:
 				((ILorann)lorann).setState(LorannState.UP);
-				BubbleKeycheck(x,y-1,lorann);
+				BubbleKeyCheck(x,y-1,lorann);
 				CoinsCheck(x,y-1,lorann);
 				DoorCheck(x,y-1,lorann);
 				if(!getBlocked(lorann.getX(),lorann.getY()-1)){
@@ -80,7 +79,7 @@ public class Controler implements IControler {
 				break;
 			case 2:
 				((ILorann)lorann).setState(LorannState.DOWN);
-				BubbleKeycheck(x,y+1,lorann);
+				BubbleKeyCheck(x,y+1,lorann);
 				CoinsCheck(x,y+1,lorann);
 				DoorCheck(x,y+1,lorann);
 				if(!getBlocked(x, y +1)){
@@ -90,7 +89,7 @@ public class Controler implements IControler {
 			case 3:
 				((ILorann)lorann).setState(LorannState.RIGHT);
 
-				BubbleKeycheck(x+1,y,lorann);
+				BubbleKeyCheck(x+1,y,lorann);
 				CoinsCheck(x+1,y,lorann);
 				DoorCheck(x+1,y,lorann);
 				if(!getBlocked(x + 1, y)){
@@ -99,7 +98,7 @@ public class Controler implements IControler {
 				break;
 			case 4:
 				((ILorann)lorann).setState(LorannState.LEFT);
-				BubbleKeycheck(x-1,y,lorann);
+				BubbleKeyCheck(x-1,y,lorann);
 				CoinsCheck(x-1,y,lorann);
 				DoorCheck(x-1,y,lorann);
 				if(!getBlocked(x - 1, y)){
@@ -110,7 +109,7 @@ public class Controler implements IControler {
 		}model.change();
 	}
 	
-	private void BubbleKeycheck(int x, int y, IElement lorann){
+	private void BubbleKeyCheck(int x, int y, IElement lorann){
 		IElement bubblekey = model.getMap().getElement(x, y);
 		if(bubblekey instanceof IBubbleKey){
 			lorann.setPosition(x, y);
@@ -118,7 +117,7 @@ public class Controler implements IControler {
 			for(IElement[] e : model.getMap().getElements()){
 				for(IElement element : e){
 					if(element instanceof IDoor){
-						((IDoor)element).setDoorstate(DoorState.OPEN);
+						((IDoor)element).setDoorState(DoorState.OPEN);
 						element.getSprite().setImage("sprite/gate_open.png");
 					}
 				}
@@ -137,10 +136,10 @@ public class Controler implements IControler {
 	private void DoorCheck(int x, int y, IElement lorann){
 		IElement door = model.getMap().getElement(x, y);
 		if (door instanceof IDoor){
-			if(((IDoor)door).getDoorstate().equals(DoorState.OPEN)){
+			if(((IDoor)door).getDoorState().equals(DoorState.OPEN)){
 				model.setGamestate(GameState.Congratulation);
 				lorann.setPosition(x, y);
-			}else if (((IDoor)door).getDoorstate().equals(DoorState.CLOSE)){
+			}else if (((IDoor)door).getDoorState().equals(DoorState.CLOSE)){
 				model.setGamestate(GameState.GAMEOVER);
 			}
 

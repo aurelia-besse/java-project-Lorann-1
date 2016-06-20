@@ -67,8 +67,6 @@ public class Lorann extends MobileElement implements ILorann {
 
 	public void setState(LorannState state) {
 		this.state = state;
-	//getSprite().setAnimated(state.ordinal());
-	
 	}
 
 	public SpellState getPossessionSpell() {

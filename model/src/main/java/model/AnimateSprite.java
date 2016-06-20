@@ -9,7 +9,7 @@ import contract.IAnimateSprite;
 
 public class AnimateSprite extends Sprite implements IAnimateSprite{
 
-	private Image images[];
+	private Image[] images;
 	private int next;
 	public AnimateSprite(String url,String[] urls) {
 		super(url);

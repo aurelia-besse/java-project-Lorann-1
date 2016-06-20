@@ -50,7 +50,7 @@ public class Game extends Observable implements IGame {
 				case 6:
 					IElement door = new Door(x, y, url);
 					map.addElement(door, x, y);
-					((IDoor)door).setDoorstate(DoorState.CLOSE);
+					((IDoor)door).setDoorState(DoorState.CLOSE);
 					break;
 				case 7:
 					map.setHero(new Lorann(x, y,url));

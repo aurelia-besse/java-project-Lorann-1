@@ -33,11 +33,11 @@ public class Door extends StaticElement implements IDoor {
 		super(url,Permeability.BLOCKING);
 	}
 
-	public DoorState getDoorstate() {
+	public DoorState getDoorState() {
 		return doorstate;
 	}
 
-	public void setDoorstate(DoorState doorstate) {
+	public void setDoorState(DoorState doorstate) {
 		this.doorstate = doorstate;
 	}
 	
