@@ -9,6 +9,7 @@ public class Controler implements IControler {
 
 	private IGame model;
 	private IFrame frame;
+	
 	/**
 	 * Initialize the controller
 	 * @param model
@@ -34,10 +35,9 @@ public class Controler implements IControler {
 	 */
 	private boolean getBlocked(int x, int y){
 		return model.getMap().getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
-		
-				
-				
 	}
+	
+	
 	public void keyEvents(KeyEvent e){
 		switch(e.getKeyCode()){
 			case KeyEvent.VK_UP : case KeyEvent.VK_A :
@@ -62,7 +62,8 @@ public class Controler implements IControler {
 				break;
 				
 		}
-		}
+	}
+	
 	/**
 	 * Update the state of Spell depending on the state of Lorann
 	 * @param state
@@ -80,6 +81,7 @@ public class Controler implements IControler {
 			((ISpell)spell).setState(SpellState.RIGHT);
 		}
 	}
+	
 	/**
 	 * Method to move Lorann in the map
 	 * @param state
@@ -159,6 +161,7 @@ public class Controler implements IControler {
 			}
 		}
 	}
+	
 	/**
 	 * Method that check if the element is a Coin or not
 	 * @param x
@@ -175,6 +178,7 @@ public class Controler implements IControler {
 			model.addFloor(lorann, x, y);
 		}
 	}
+	
 	/**
 	 * Method that check if the element is a Door or not
 	 * @param x
@@ -197,15 +201,19 @@ public class Controler implements IControler {
 		}
 	}
 	
+	/**
+	 * Method to move mobile element
+	 */
 	public void moveMobileElement(){
 		try{
 			moveDemon();
 			moveSpell();
-		}catch(Exception ex){};
-	
-		
+		}catch(Exception ex){};	
 	}
-			
+	
+	/**
+	 * Method to move demon
+	 */
 	public void moveDemon(){		
 			for(IMobileElement demon : model.getMap().getMobiles()){
 				double random = Math.random();
@@ -228,6 +236,9 @@ public class Controler implements IControler {
 			}
 	}
 	
+	/**
+	 * Method to move spell
+	 */
 	public void moveSpell(){
 			IElement spell = model.getMap().getSpell();
 			int x = spell.getX();
@@ -267,7 +278,9 @@ public class Controler implements IControler {
 		updateSprites();
 	}
 	
-	
+	/**
+	 * Method to update the image of the spell and Lorann
+	 */
 	private void updateSprites(){
 		((IAnimateSprite)model.getMap().getLorann().getSprite()).nextImage();
 		if(model.getMap().getSpell()!=null){
@@ -276,6 +289,9 @@ public class Controler implements IControler {
 		
 	}
 	
+	/**
+	 * Method to check the contact between different elements
+	 */
 	public void contact(){
 		IElement lorann = model.getMap().getLorann();
 		IElement spell = model.getMap().getSpell();

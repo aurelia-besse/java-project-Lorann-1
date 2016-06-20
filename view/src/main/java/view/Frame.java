@@ -12,7 +12,7 @@ import contract.IGame;
 /** This class Frame is used to run what is present in the game window
  * 
  * @author Aurelia
- * @version 20.06.16
+ * @version 16.06.16
  */
 public class Frame extends JFrame implements IFrame, KeyListener{
 
@@ -25,9 +25,9 @@ public class Frame extends JFrame implements IFrame, KeyListener{
 	IControler controler;
 	
 	/**
-	 * 
+	 * Initialize the frame
 	 * @param game
-	 * 		This is the game 	
+	 * 		It's the game 	
 	 */
 	public Frame(IGame game){
 		this.game = game;
@@ -42,28 +42,33 @@ public class Frame extends JFrame implements IFrame, KeyListener{
 		
 		this.setVisible(true);
 	}
-/**
- * @param keyevent 
- * 			Use the keyevent
- */
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	public void keyPressed(KeyEvent keyevent ) {
-		controler.keyEvents(keyevent);
-		
+		controler.keyEvents(keyevent);	
 	}
 
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
+	public void keyReleased(KeyEvent e) {	
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
-/**
- * 
- * @return the controler 
- */
+	
+	/**
+ 	* Method to get the controller
+ 	* @return the controller 
+ 	*/
 	public IControler getControler() {
 		return controler;
 	}
