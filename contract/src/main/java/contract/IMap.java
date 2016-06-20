@@ -10,9 +10,9 @@ public interface IMap {
 
 	public IElement[][] getElements();
 
-	ArrayList<IMobileElement> getMobiles();
+	public ArrayList<IMobileElement> getMobiles();
 
-	void addMobiles(IMobileElement mobile);
+	public void addMobiles(IMobileElement mobile);
 
 	public IElement getElement(int x, int y);
 

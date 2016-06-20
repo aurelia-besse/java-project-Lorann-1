@@ -1,6 +1,6 @@
 package model;
 
-import contract.IPermeability;
+import contract.Permeability;
 
 /**
 *<b>The Loot class represents all objects that the user can take</b>
@@ -23,7 +23,7 @@ public class Loot extends StaticElement {
 	 * @param permeability
 	 * 			To assign a permeability
 	 */
-	public Loot ( String url, IPermeability permeability){
+	public Loot ( String url, Permeability permeability){
 		super(url, permeability);
 	}
 }
