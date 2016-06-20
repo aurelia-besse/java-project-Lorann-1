@@ -2,9 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-import contract.IElement;
-import contract.IMap;
-import contract.IMobileElement;
+import contract.*;
 
 /**
 *<b>The Map class represents the whole map</b>
@@ -27,6 +25,7 @@ public class Map implements IMap {
 	public IElement elements[][];
 	public ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
 	public IElement hero;
+	private IElement spell;
 	
 	/**
 	 * 
@@ -124,5 +123,11 @@ public class Map implements IMap {
 	 */
 	public void setHero(IElement hero) {
 		this.hero = hero;
+	}
+	public IElement getSpell() {
+		return spell;
+	}
+	public void setSpell(IElement spell) {
+		this.spell = spell;
 	}
 }

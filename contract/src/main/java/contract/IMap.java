@@ -10,9 +10,9 @@ public interface IMap {
 
 	public IElement[][] getElements();
 
-	ArrayList<IMobileElement> getMobiles();
+	public ArrayList<IMobileElement> getMobiles();
 
-	void addMobiles(IMobileElement mobile);
+	public void addMobiles(IMobileElement mobile);
 
 	public IElement getElement(int x, int y);
 
@@ -21,5 +21,9 @@ public interface IMap {
 	public IElement getHero();
 	
 	public void setHero(IElement hero);
+	
+	public IElement getSpell();
+	
+	public void setSpell(IElement spell);
 
 }

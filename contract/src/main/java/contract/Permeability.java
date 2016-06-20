@@ -1,8 +1,8 @@
 package contract;
 
-import contract.IPermeability;
 
-public enum Permeability implements IPermeability {
+
+public enum Permeability  {
 
 	BLOCKING, PENETRABLE;
 }

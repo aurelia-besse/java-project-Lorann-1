@@ -1,13 +1,14 @@
 package controller;
 
 import contract.IControler;
-import contract.ITicks;
 
-public class Ticks implements Runnable, ITicks{
+
+public class Ticks implements Runnable{
 
 	private IControler controler;
 	public Ticks( IControler controler){
 		this.controler = controler;
+		
 	}
 	/* (non-Javadoc)
 	 * @see controller.ITicks#run()
@@ -15,8 +16,14 @@ public class Ticks implements Runnable, ITicks{
 	public void run() {
 		try{
 			while(true){
-				controler.moveDemon();
-				Thread.sleep(200);
+				controler.update();
+				try{
+				
+			
+				
+				Thread.sleep(120);
+				}catch(Exception e){e.printStackTrace();}
+				
 			}
 		}catch(Exception ex){}
 		

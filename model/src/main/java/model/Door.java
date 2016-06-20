@@ -1,5 +1,6 @@
 package model;
 
+import contract.DoorState;
 import contract.IDoor;
 import contract.Permeability;
 
@@ -26,9 +27,21 @@ public class Door extends StaticElement implements IDoor {
 	 * @param url
 	 * 			The link to a specific image. 
 	 */
+	private DoorState doorstate;
+	
 	public Door(int x, int y, String url) {
 		super(url,Permeability.BLOCKING);
 	}
+
+	public DoorState getDoorstate() {
+		return doorstate;
+	}
+
+	public void setDoorstate(DoorState doorstate) {
+		this.doorstate = doorstate;
+	}
+	
+	
 }
 
 
