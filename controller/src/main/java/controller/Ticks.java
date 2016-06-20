@@ -26,7 +26,7 @@ public class Ticks implements Runnable{
 				
 			
 				
-				Thread.sleep(120);
+				Thread.sleep(150);
 				}catch(Exception e){e.printStackTrace();}
 				
 			}

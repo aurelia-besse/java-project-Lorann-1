@@ -43,6 +43,11 @@ public class Element implements IElement {
 		return this.x;
 	}
 
+	/**
+	 * Method to set the x coordinate of an element
+	 * @param x
+	 * 		the x coordinate of an element
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
@@ -54,6 +59,11 @@ public class Element implements IElement {
 		return this.y;
 	}
 
+	/**
+	 * Method to set the y coordinate of an element
+	 * @param y
+	 * 		the x coordinate of an element
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
@@ -75,10 +85,11 @@ public class Element implements IElement {
 	public Permeability getPermeability() {
 		return permeability;
 	}
-/**
- * 
- * @param permeability
- */
+	
+	/**
+	 * Method to set the permeability of an element
+	 * @param permeability
+	 */
 	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
@@ -90,6 +101,11 @@ public class Element implements IElement {
 		return sprite;
 	}
 
+	/**
+	 * Method to set the sprite of an element
+	 * @param sprite
+	 * 			the sprite of an element
+	 */
 	public void setSprite(ISprite sprite) {
 		this.sprite = sprite;
 	}

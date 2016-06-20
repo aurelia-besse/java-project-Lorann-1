@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Observable;
 import javax.imageio.ImageIO;
 import contract.*;
@@ -18,43 +19,80 @@ import contract.*;
 * <li>Download the database</li>
 * </ul>
 * </p>
-* 
 * @author Aurelia
 * @version 16.06.16
 */
 public class Game extends Observable implements IGame {
 
-	private IMap map;
 	private DBGame dbgame;
 	private GameState gameState;
+	private ArrayList<IMap> maps;
+	private int id;
 
+	/**
+	 * Initialize the game
+	 */
 	public Game(){
 		dbgame = new DBGame();
 		gameState = GameState.OK;
+		maps = new ArrayList<IMap>();
 		initMap();
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * @see contract.IGame#getMaps()
+	 */
+	public ArrayList<IMap> getMaps() {
+		return maps;
+	}
+
+	/*
+	 * (non-Javadoc)
 	 * @see contract.IGame#getMap()
 	 */
-	public IMap getMap() {
-		return map;
+	public IMap getMap(){
+		return maps.get(id);
 	}
-	/**
-	 *Initializes the game map
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getId()
 	 */
-	public void initMap(){
-		map = new Map(20,12);
+	public int getId() {
+		return id;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#setId(int)
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	private void initMap() {
 		try {
-			ResultSet result = dbgame.procedure("{call elementMap(?)}", 1);
+			ResultSet resultMaps = dbgame.procedure("{call allMap()}");
+			while(resultMaps.next()){
+				loadsMap(resultMaps.getInt("IDmap"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		change();
+	}
+	
+	public void loadsMap(int idMap){
+		Map map = new Map(20,12);
+		try {
+			ResultSet result = dbgame.procedure("{call elementMap(?)}", idMap);
 			while(result.next()){
 				int x = result.getInt("x");
 				int y = result.getInt("y");
-				int id = result.getInt("IDelement");
+				int idElement = result.getInt("IDelement");
 				String url = result.getString("url");
-				System.out.println(url);
-				switch(id){
+				switch(idElement){
 				case 1: case 2: case 3:
 					map.addElement(new Wall(x, y,url),x,y);
 					break;
@@ -78,9 +116,8 @@ public class Game extends Observable implements IGame {
 					map.addElement(new Floor(x, y, url), x, y);
 					break;
 				}
-				
 			}
-		
+			maps.add(map);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -148,7 +185,6 @@ public class Game extends Observable implements IGame {
 			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/you_loose.jpg"));
 			graphics.drawImage(image, 0, 0, null);
 			} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -165,14 +201,13 @@ public class Game extends Observable implements IGame {
 			} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * @see contract.IGame#getObservable()
 	 */
-	public Observable getObservable() {
+	public Observable getObservable(){
 		return null;
 	}
 }

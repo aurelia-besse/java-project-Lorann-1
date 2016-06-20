@@ -22,4 +22,15 @@ public class DBGame {
 		}
 		return null;
 	}
+	
+	public ResultSet procedure(String sql){
+		try{
+			CallableStatement call = connection.getConnection().prepareCall(sql);
+			call.execute();
+			return call.getResultSet();
+		}catch(SQLException e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

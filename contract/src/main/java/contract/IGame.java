@@ -1,6 +1,7 @@
 package contract;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,11 +15,29 @@ import contract.IMap;
 public interface IGame {
 
 	/**
+	 * Method to get the id of the map
+	 * @return the id
+	 */
+	public int getId();
+	
+	/**
+	 * Method to set the id of the map
+	 * @param id
+	 */
+	public void setId(int id);
+	
+	/**
+	 * Method to get a map on the list
+	 * @return a list of all maps
+	 */
+	public ArrayList<IMap> getMaps();
+	
+	/**
 	 * Method to get a map
 	 * @return the map 
 	 */
 	IMap getMap();
-	 
+	  
 	/**
 	 * Method to get an observable
 	 * @return
