@@ -10,7 +10,11 @@ import javax.swing.JPanel;
 
 import contract.*;
 
-
+/** This class panel is used to run what is present in the game window
+ * 
+ * @author Aurelia
+ * @version 20.06.16
+ */
 
 public class Panel extends JPanel implements Observer{
 
@@ -20,6 +24,11 @@ public class Panel extends JPanel implements Observer{
 	private static final long serialVersionUID = 508369234136358064L;
 	
 	private Frame frame;
+	/**
+	 * 
+	 * @param frame
+	 * 			It's the frame
+	 */
 	public Panel(Frame frame){
 		this.frame = frame;
 		this.setBackground(new Color(255,0,255));

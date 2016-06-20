@@ -15,7 +15,7 @@ import contract.*;
 * </ul>
 * </p>
 * 
-* @author Arthur
+* @author Aurelia
 * @version 17.06.16
 */
 public class Map implements IMap {
@@ -42,7 +42,7 @@ public class Map implements IMap {
 	}
 	
 	/**
-	 * @param width 
+	 * @return width 
 	 * 			Recovers the width of the map
 	 */
 	public int getWidth() {
@@ -57,7 +57,7 @@ public class Map implements IMap {
 		this.width = width;
 	}
 	/**
-	 * @param height
+	 * @return height
 	 * 			Recovers the height of the map
 	 */
 	public int getHeight() {
@@ -92,10 +92,20 @@ public class Map implements IMap {
 	public ArrayList<IMobileElement> getMobiles() {
 		return mobiles;
 	}
+	/**
+	 * @param mobile
+	 * 				Add a mobile element
+	 */
 	public void addMobiles(IMobileElement mobile) {
 		mobiles.add(mobile);
 	}
 
+	/**
+	 * @param x
+	 * 			The x position of the element on a landmark o,x,y.
+	 * @param y
+	 * 			The y position of the element on a landmark o,x,y.
+	 */
 	public IElement getElement( int x,  int y) {
 		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
 			return null;
@@ -124,9 +134,17 @@ public class Map implements IMap {
 	public void setHero(IElement hero) {
 		this.hero = hero;
 	}
+	
+/**
+ * @return Recover the spell
+ */
 	public IElement getSpell() {
 		return spell;
 	}
+/**
+ * @param spell
+ * 			Update the spell
+ */
 	public void setSpell(IElement spell) {
 		this.spell = spell;
 	}

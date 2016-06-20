@@ -6,12 +6,22 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Observable;
-
 import javax.imageio.ImageIO;
-
 import contract.*;
 
-
+/**
+*<b>The Game class represents the entire game</b>
+* <p>
+* The class Game consists to:
+* <ul>
+* <li>Download the map</li>
+* <li>Download the database</li>
+* </ul>
+* </p>
+* 
+* @author Aurelia
+* @version 17.06.16
+*/
 public class Game extends Observable implements IGame {
 
 	private IMap map;
@@ -23,13 +33,16 @@ public class Game extends Observable implements IGame {
 		gamestate = GameState.OK;
 		initMap();
 	}
-	/* (non-Javadoc)
-	 * @see model.IGame#getMap()
+	/**
+	 * @return The map of the game
 	 */
 	public IMap getMap() {
 		return map;
 	}
-	
+	/**
+	 * 
+	 *Initializes the game map
+	 */
 	public void initMap(){
 		map = new Map(20,12);
 		try {
@@ -67,17 +80,24 @@ public class Game extends Observable implements IGame {
 				}
 				
 			}
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+/**
+ * 
+ */
 	public void change(){
 	setChanged();
 	notifyObservers();
 	}
-	
+	/**
+	 * Create the spell depending on the position of the character
+	 * @param hero 
+	 * 			Represente the hero
+	 */
 	public void addSpells(IElement hero){
 		int x =hero.getX();
 		int y =hero.getY();
@@ -92,20 +112,37 @@ public class Game extends Observable implements IGame {
 		}
 		getMap().setSpell(new Spell(x,y,"sprite/fireball_1.png"));
 	}
-	
+	/**
+	 * Add floor for the game
+	 * @param hero 
+	 * 			This is the Hero
+	 * @param x
+	 * 			The x position of the floor on a landmark o,x,y.
+	 * @param y
+	 * 			The y position of the floor on a landmark o,x,y.
+	 */
 	public void addFloor(IElement hero, int x ,int y){
 		getMap().addElement(new Floor(hero.getX(),hero.getY(),"sprite/floor.png"),x,y);
 	}
 	
-	
-
+/**
+ * @return Recover the state game
+ */
 	public GameState getGamestate() {
 		return gamestate;
 	}
+	/**
+	 * @param gamestate
+	 * 				Update the Game
+	 */
 	public void setGamestate(GameState gamestate) {
 		this.gamestate = gamestate;
 	}
-	
+	/**
+	 * Displays the defeat ... 
+	 * @param graphics 
+	 * 			Give the picture for the loose
+	 */
 	public void GameOver(Graphics graphics){
 		Image image;
 		try {
@@ -116,7 +153,11 @@ public class Game extends Observable implements IGame {
 			e.printStackTrace();
 		}	
 	}
-	
+	/**
+	 * Displays the win!
+	 * @param grapihcs
+	 * 				Give the picture for the win
+	 */
 	public void Congratulations(Graphics graphics){
 		Image image;
 		try {
@@ -128,10 +169,9 @@ public class Game extends Observable implements IGame {
 		}
 		
 	}
-	
-	/* (non-Javadoc)
-	 * @see model.IGame#getObservable()
-	 */
+/**
+ * @return Null
+ */
 	public Observable getObservable() {
 		// TODO Auto-generated method stub
 		return null;

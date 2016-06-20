@@ -70,7 +70,10 @@ public class Element implements IElement {
 	public Permeability getPermeability() {
 		return permeability;
 	}
-
+/**
+ * 
+ * @param permeability
+ */
 	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
