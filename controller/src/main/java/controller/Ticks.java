@@ -6,6 +6,11 @@ import contract.IControler;
 public class Ticks implements Runnable{
 
 	private IControler controler;
+	/**
+	 * 
+	 * @param controler
+	 * 				Uses the controler
+	 */
 	public Ticks( IControler controler){
 		this.controler = controler;
 		

@@ -7,6 +7,15 @@ import javax.imageio.ImageIO;
 
 import contract.IAnimateSprite;
 
+/**
+*<b>The AnimateSprite class animates pictures</b>
+* <p>
+* The class AnimateSprite consists to make a movement for a picture
+* <ul>
+* </p>
+* @author Aurelia
+* @version 20.06.16
+*/
 public class AnimateSprite extends Sprite implements IAnimateSprite{
 
 	private Image[] images;
@@ -32,7 +41,10 @@ public class AnimateSprite extends Sprite implements IAnimateSprite{
 			this.next = 0;
 		}
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see model.Sprite#getImage()
+	 */
 	public Image getImage() {
         return this.images[this.next];
     }

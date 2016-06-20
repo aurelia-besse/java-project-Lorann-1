@@ -9,13 +9,33 @@ public class Controler implements IControler {
 
 	private IGame model;
 	private IFrame frame;
+	/**
+	 * 
+	 * @param model
+	 * 			Use the model
+	 * @param frame
+	 * 			Use the frame
+	 */
 	public Controler(IGame model, IFrame frame){
 		this.model = model;
 		this.frame = frame;
 		Thread t = new Thread(new Ticks(this));
 		t.start();
+<<<<<<< HEAD
 	}	
 	
+=======
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * 		The x position on a landmark o,x,y.
+	 * @param y
+	 * 		The y position on a landmark o,x,y.
+	 * @return The permeability or not
+	 */
+>>>>>>> 00f1267931bb6673b764c0d84d80993c7dfb78fd
 	private boolean getBlocked(int x, int y){
 		return model.getMap().getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
 		
@@ -47,7 +67,11 @@ public class Controler implements IControler {
 				
 		}
 		}
-	
+	/**
+	 * 
+	 * @param state
+	 * 				Update the state
+	 */
 	private void setSpellState(LorannState state){
 		IElement spell = model.getMap().getSpell();
 		if(state == LorannState.UP){
@@ -60,7 +84,11 @@ public class Controler implements IControler {
 			((ISpell)spell).setState(SpellState.RIGHT);
 		}
 	}
-	
+	/**
+	 * 
+	 * @param state
+	 * 			Give the state
+	 */
 	public void moveLorann(int state){
 		IElement lorann = model.getMap().getHero();
 
@@ -108,8 +136,21 @@ public class Controler implements IControler {
 				
 		}model.change();
 	}
+<<<<<<< HEAD
 	
 	private void BubbleKeyCheck(int x, int y, IElement lorann){
+=======
+	/**
+	 * 
+	 * @param x
+	 * 			The x position of the BubbleKey on a landmark o,x,y.
+	 * @param y
+	 * 			The y position of the BubbleKey on a landmark o,x,y.
+	 * @param lorann
+	 * 				The hero
+	 */
+	private void BubbleKeycheck(int x, int y, IElement lorann){
+>>>>>>> 00f1267931bb6673b764c0d84d80993c7dfb78fd
 		IElement bubblekey = model.getMap().getElement(x, y);
 		if(bubblekey instanceof IBubbleKey){
 			lorann.setPosition(x, y);
@@ -124,7 +165,15 @@ public class Controler implements IControler {
 			}
 		}
 	}
-	
+	/**
+	 * 
+	 * @param x
+	 * 			The x position of the coins on a landmark o,x,y.
+	 * @param y
+	 * 			The y position of the coins on a landmark o,x,y.
+	 * @param lorann
+	 * 			The hero
+	 */
 	private void CoinsCheck(int x, int y, IElement lorann){
 		IElement coins = model.getMap().getElement(x, y);
 		if (coins instanceof ICoins){
@@ -132,7 +181,15 @@ public class Controler implements IControler {
 			model.addFloor(lorann, x, y);
 		}
 	}
-	
+	/**
+	 * 
+	 * @param x
+	 * 			The x position of the door on a landmark o,x,y.
+	 * @param y
+	 * 			The y position of the door on a landmark o,x,y.
+	 * @param lorann
+	 * 			The hero
+	 */
 	private void DoorCheck(int x, int y, IElement lorann){
 		IElement door = model.getMap().getElement(x, y);
 		if (door instanceof IDoor){
