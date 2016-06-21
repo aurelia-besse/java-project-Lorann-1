@@ -8,6 +8,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import contract.IController;
+
 public class TestTicks {
 
 	@BeforeClass
@@ -28,12 +30,15 @@ public class TestTicks {
 
 	@Test
 	public void testTicks() {
-		fail("Not yet implemented");
+		IController controller = null;
+		assertNotNull(new controller.Ticks(controller));
 	}
 
 	@Test
 	public void testRun() {
-		fail("Not yet implemented");
+		IController controller = null;
+		controller.Ticks ticks = new controller.Ticks(controller);
+		ticks.run();
 	}
 
 }

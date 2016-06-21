@@ -16,6 +16,12 @@ public class TestAnimateSprite {
 		
 	@Test
 	public void testGetImage() {
+		
+	
+	}
+	
+	@Test
+	public void testNextImage() {
 		int rand;
 		String[] urls = {"sprite/lorann_b.png", "sprite/lorann_bl.png", "sprite/lorann_br.png", "sprite/lorann_l.png", "sprite/lorann_r.png", "sprite/lorann_u.png", "sprite/lorann_ul.png", "sprite/lorann_ur.png"};
 		do{
@@ -27,11 +33,5 @@ public class TestAnimateSprite {
 		if(animateSprite.next != 0){
 			assertEquals(animateSprite.next,rand+1);
 		}
-	
-	}
-	
-	@Test
-	public void testNextImage() {
-		fail("No test for this function yet");
 	}
 }
