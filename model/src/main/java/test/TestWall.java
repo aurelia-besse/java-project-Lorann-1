@@ -8,7 +8,7 @@ public class TestWall {
 
 	@Test
 	public void testWall() {
-		fail("Not yet implemented");
+		assertNotNull(new model.Wall(0, 0, "sprite/bone.png"));
 	}
 
 }
