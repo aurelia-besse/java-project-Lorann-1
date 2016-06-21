@@ -5,45 +5,95 @@ import java.awt.Image;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Observable;
-
 import contract.IGame;
 import contract.IMap;
 import javax.imageio.ImageIO;
-
 import contract.*;
 
-
+/**
+*<b>The Game class represents the entire game</b>
+* <p>
+* The class Game consists to:
+* <ul>
+* <li>Download the map</li>
+* <li>Download the database</li>
+* </ul>
+* </p>
+* @author Aurelia
+* @version 16.06.16
+*/
 public class Game extends Observable implements IGame {
 
 	public IMap map;
 	private DBGame dbgame;
-	private GameState gamestate;
+	private GameState gameState;
+	private ArrayList<IMap> maps;
+	private int id;
 
-	public Game(){
-		int numbermap = 1;
-		dbgame = new DBGame();
-		gamestate = GameState.OK;
-		initMap(numbermap);
-	}
-	/* (non-Javadoc)
-	 * @see model.IGame#getMap()
+	/**
+	 * Initialize the game
 	 */
-	public IMap getMap() {
-		return map;
+	public Game(){
+		dbgame = new DBGame();
+		gameState = GameState.OK;
+		maps = new ArrayList<IMap>();
+		initMap();
 	}
 	
-	public void initMap(int numbermap){
-		map = new Map(20,12);
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getMaps()
+	 */
+	public ArrayList<IMap> getMaps() {
+		return maps;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getMap()
+	 */
+	public IMap getMap(){
+		return maps.get(id);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getId()
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#setId(int)
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	private void initMap() {
 		try {
-			ResultSet result = dbgame.procedure("{call elementMap(?)}", numbermap);
+			ResultSet resultMaps = dbgame.procedure("{call allMap()}");
+			while(resultMaps.next()){
+				loadsMap(resultMaps.getInt("IDmap"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		change();
+	}
+	public void loadsMap(int idMap){
+		Map map = new Map(20,12);
+		try {
+			ResultSet result = dbgame.procedure("{call elementMap(?)}", idMap);
 			while(result.next()){
 				int x = result.getInt("x");
 				int y = result.getInt("y");
-				int id = result.getInt("IDelement");
-				String url = result.getString("url");
-				System.out.println(url);
-				switch(id){
+				int idElement = result.getInt("IDelement");
+				String url = result.getString("url");				switch(idElement){
 				case 1: case 2: case 3:
 					map.addElement(new Wall(x, y,url),x,y);
 					break;
@@ -53,10 +103,10 @@ public class Game extends Observable implements IGame {
 				case 6:
 					IElement door = new Door(x, y, url);
 					map.addElement(door, x, y);
-					((IDoor)door).setDoorstate(DoorState.CLOSE);
+					((IDoor)door).setDoorState(DoorState.CLOSE);
 					break;
 				case 7:
-					map.setHero(new Lorann(x, y,url));
+					map.setLorann(new Lorann(x, y,url));
 					break;
 				case 8: case 9 : case 10: case 11:
 					map.addMobiles(new Demon(x, y, url));
@@ -68,75 +118,98 @@ public class Game extends Observable implements IGame {
 					map.addElement(new Floor(x, y, url), x, y);
 					break;
 				}
-				
 			}
+			maps.add(map);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#change()
+	 */
 	public void change(){
-	setChanged();
-	notifyObservers();
+		setChanged();
+		notifyObservers();
 	}
 	
-	public void addSpells(IElement hero){
-		int x =hero.getX();
-		int y =hero.getY();
-		if(((ILorann)hero).getState().equals(LorannState.UP)&& getMap().getElement(x, y-1).getPermeability().equals(Permeability.PENETRABLE)){
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#addSpells(contract.IElement)
+	 */
+	public void addSpells(IElement lorann){
+		int x =lorann.getX();
+		int y =lorann.getY();
+		if(((ILorann)lorann).getState().equals(LorannState.UP)&& getMap().getElement(x, y-1).getPermeability().equals(Permeability.PENETRABLE)){
 			y --;
-		}else if (((ILorann)hero).getState().equals(LorannState.DOWN)&& getMap().getElement(x, y+1).getPermeability().equals(Permeability.PENETRABLE)){
+		}else if (((ILorann)lorann).getState().equals(LorannState.DOWN)&& getMap().getElement(x, y+1).getPermeability().equals(Permeability.PENETRABLE)){
 			y ++;
-		}else if (((ILorann)hero).getState().equals(LorannState.RIGHT) && getMap().getElement(x+1, y).getPermeability().equals(Permeability.PENETRABLE)){
+		}else if (((ILorann)lorann).getState().equals(LorannState.RIGHT) && getMap().getElement(x+1, y).getPermeability().equals(Permeability.PENETRABLE)){
 			x ++;
-		}else if (((ILorann)hero).getState().equals(LorannState.LEFT) && getMap().getElement(x-1, y).getPermeability().equals(Permeability.PENETRABLE)){
+		}else if (((ILorann)lorann).getState().equals(LorannState.LEFT) && getMap().getElement(x-1, y).getPermeability().equals(Permeability.PENETRABLE)){
 			x --;
 		}
 		getMap().setSpell(new Spell(x,y,"sprite/fireball_1.png"));
 	}
 	
-	public void addFloor(IElement hero, int x ,int y){
-		getMap().addElement(new Floor(hero.getX(),hero.getY(),"sprite/floor.png"),x,y);
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#addFloor(contract.IElement, int, int)
+	 */
+	public void addFloor(IElement lorann, int x ,int y){
+		getMap().addElement(new Floor(lorann.getX(),lorann.getY(),"sprite/floor.png"),x,y);
 	}
 	
-	
-
-	public GameState getGamestate() {
-		return gamestate;
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getGamestate()
+	 */
+	public GameState getGameState() {
+		return gameState;
 	}
-	public void setGamestate(GameState gamestate) {
-		this.gamestate = gamestate;
+	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#setGamestate(contract.GameState)
+	 */
+	public void setGameState(GameState gameState) {
+		this.gameState = gameState;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#GameOver(java.awt.Graphics)
+	 */
 	public void GameOver(Graphics graphics){
 		Image image;
 		try {
-			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/maxresdefault.jpg"));
+			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/you_loose.jpg"));
 			graphics.drawImage(image, 0, 0, null);
 			} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#Congratulations(java.awt.Graphics)
+	 */
 	public void Congratulations(Graphics graphics){
 		Image image;
 		try {
-			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/maxresdefault.jpg"));
+			image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream("sprite/you_won.png"));
 			graphics.drawImage(image, 0, 0, null);
 			} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
-	
-	/* (non-Javadoc)
-	 * @see model.IGame#getObservable()
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getObservable()
 	 */
-	public Observable getObservable() {
-		// TODO Auto-generated method stub
+	public Observable getObservable(){
 		return null;
 	}
 }

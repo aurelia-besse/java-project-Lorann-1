@@ -5,22 +5,31 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
-import contract.IControler;
+import contract.IController;
 import contract.IFrame;
 import contract.IGame;
 
+/** 
+ * <b>This class Frame is used to create the game window</b>
+ * 
+ * @author Aurelia
+ * @version 16.06.16
+ */
 public class Frame extends JFrame implements IFrame, KeyListener{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 2773168040909497332L;
 	private Panel panel;
 	int HEIGHT = 412;
 	int WIDTH = 646;
 	IGame game;
-	IControler controler;
+	IController controller;
 	
+	/**
+	 * Initialize the frame
+	 * @param game
+	 * 		It's the game 	
+	 */
 	public Frame(IGame game){
 		this.game = game;
 		this.addKeyListener(this);
@@ -34,28 +43,43 @@ public class Frame extends JFrame implements IFrame, KeyListener{
 		
 		this.setVisible(true);
 	}
-
-	public void keyPressed(KeyEvent connard ) {
-		controler.keyEvents(connard);
-		
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
+	public void keyPressed(KeyEvent keyevent ) {
+		controller.keyEvents(keyevent);	
 	}
 
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
+	public void keyReleased(KeyEvent e) {	
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+	}
+	
+	/**
+ 	* Method to get the controller
+ 	* @return the controller 
+ 	*/
+	public IController getController() {
+		return controller;
 	}
 
-	public IControler getControler() {
-		return controler;
-	}
-
-	public void setControler(IControler controler) {
-		this.controler = controler;
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IFrame#setControler(contract.IControler)
+	 */
+	public void setController(IController controller) {
+		this.controller = controller;
 	}
 	
 	

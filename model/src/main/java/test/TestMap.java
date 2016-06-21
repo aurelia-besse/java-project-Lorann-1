@@ -9,15 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import contract.IElement;
-import contract.ISprite;
 import contract.Permeability;
 import model.Element;
-import model.Map;
 import model.Sprite;
 
 public class TestMap {
-	
-	private Element[][] newElements;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -193,19 +189,19 @@ public class TestMap {
 	public void testGetHero(){
 		Sprite sprite = new Sprite("sprite/lorann_ul.png");
 		model.Map map = new model.Map((int)(Math.random()*100),(int)(Math.random()*100));
-		map.hero = new Element(Permeability.PENETRABLE,sprite);
-		assertEquals(map.hero, map.getHero());
+		map.lorann = new Element(Permeability.PENETRABLE,sprite);
+		assertEquals(map.lorann, map.getLorann());
 	}
 	
 	@Test
 	public void testSetHero(){
 		Sprite sprite = new Sprite("sprite/lorann_ul.png");
 		model.Map map = new model.Map((int)(Math.random()*100),(int)(Math.random()*100));
-		map.hero = new Element(Permeability.PENETRABLE,sprite);
+		map.lorann = new Element(Permeability.PENETRABLE,sprite);
 		Sprite newSprite = new Sprite("sprite/lorann_ur.png");
 		IElement newHero =new Element(Permeability.PENETRABLE,newSprite);
-		map.setHero(newHero);
-		assertEquals(newHero, map.getHero());
+		map.setLorann(newHero);
+		assertEquals(newHero, map.getLorann());
 	}
 	
 	@Test

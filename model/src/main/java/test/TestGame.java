@@ -25,11 +25,11 @@ public class TestGame {
 	}
 
 	@Test
-	public void testInitMap() {
+	public void testLoadsMap() {
 		model.Game game = new model.Game();
-		game.initMap(1);
+		game.loadsMap(1);
 		IMap map1 = game.getMap();
-		game.initMap(3);
+		game.loadsMap(3);
 		IMap map2 = game.getMap();
 		assertNotSame(map1, map2);
 	}

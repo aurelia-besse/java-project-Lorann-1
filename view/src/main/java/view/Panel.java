@@ -10,16 +10,24 @@ import javax.swing.JPanel;
 
 import contract.*;
 
-
+/** 
+ * <b>This class panel is used to display the different elements in the game window</b>
+ * 
+ * @author Aurelia
+ * @version 16.06.2016
+ */
 
 public class Panel extends JPanel implements Observer{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 508369234136358064L;
 	
 	private Frame frame;
+	
+	/**
+	 * Initialize the panel
+	 * @param frame
+	 * 			It's the frame
+	 */
 	public Panel(Frame frame){
 		this.frame = frame;
 		this.setBackground(new Color(255,0,255));
@@ -74,12 +82,12 @@ public class Panel extends JPanel implements Observer{
 			design(g, ((IElement)demon).getSprite().getImage(), ((IElement)demon).getX(),((IElement)demon).getY());
 		}
 		
-		if(!((ILorann)frame.game.getMap().getHero()).getPossessionSpell().equals(SpellState.NotThrow)){
+		if(!((ILorann)frame.game.getMap().getLorann()).getPossessionSpell().equals(SpellState.NotThrow)){
 		design(g, frame.game.getMap().getSpell().getSprite().getImage(),frame.game.getMap().getSpell().getX(), frame.game.getMap().getSpell().getY());}
-		design(g, frame.game.getMap().getHero().getSprite().getImage(),frame.game.getMap().getHero().getX(), frame.game.getMap().getHero().getY());
-		if(frame.game.getGamestate().equals(GameState.GAMEOVER)){
+		design(g, frame.game.getMap().getLorann().getSprite().getImage(),frame.game.getMap().getLorann().getX(), frame.game.getMap().getLorann().getY());
+		if(frame.game.getGameState().equals(GameState.GAMEOVER)){
 			frame.game.GameOver(g);
-		}else if(frame.game.getGamestate().equals(GameState.Congratulation)){
+		}else if(frame.game.getGameState().equals(GameState.Congratulation)){
 			frame.game.Congratulations(g);
 		}
 			

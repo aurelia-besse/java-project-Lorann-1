@@ -1,27 +1,32 @@
 package main;
 
-import controller.Controller;
-import model.Model;
-import view.View;
+import java.io.IOException;
 
+import contract.IController;
+import contract.IFrame;
+import contract.IGame;
+import controller.Controller;
+import model.Game;
+import view.Frame;
 /**
- * The Class Main.
- *
- * @author Jean-Aymeric Diet
+ * 
+ * @author Aurelia, Arthur, Adrien
+ * @version 15.06.2016
  */
+
 public abstract class Main {
 
 	/**
-	 * The main method.
-	 *
-	 * @param args
-	 *          the arguments
-	 */
-	/*public static void main(final String[] args) {
-		final Model model = new Model();
-		final View view = new View(model);
-		final Controller controller = new Controller(view, model);
-		view.setController(controller);
-		controller.control();
-	}*/
+	* Method to start the game
+	* @param args
+	* @throws IOException
+	*/
+	public static void main(final String[] args) throws IOException {
+		IGame game = new Game();
+		IFrame frame = new Frame(game);
+		IController control = new Controller(game,frame);
+		frame.setController(control);
+					
+	}
+
 }

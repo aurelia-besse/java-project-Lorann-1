@@ -13,11 +13,12 @@ import contract.Permeability;
 * <ul>
 * <li>An x and y coordinates to locate on a map at the start of the game.</li>
 * <li>A url to connect the various images format . png.</li>
-* <li>And a list to give him a permeability or not.</li>
+* <li>And a list to give him a permeability.</li>
 * </ul>
 * </p>
 * 
-* @author Arthur
+* @author Aurelia
+* @version 15.06.2016
  */
 public class Element implements IElement {
 	public int x, y;
@@ -42,6 +43,11 @@ public class Element implements IElement {
 		return this.x;
 	}
 
+	/**
+	 * Method to set the x coordinate of an element
+	 * @param x
+	 * 		the x coordinate of an element
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
@@ -53,10 +59,19 @@ public class Element implements IElement {
 		return this.y;
 	}
 
+	/**
+	 * Method to set the y coordinate of an element
+	 * @param y
+	 * 		the x coordinate of an element
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IElement#setPosition(int, int)
+	 */
 	public void setPosition(int x, int y){
 		this.x = x;
 		this.y = y;
@@ -70,7 +85,11 @@ public class Element implements IElement {
 	public Permeability getPermeability() {
 		return permeability;
 	}
-
+	
+	/**
+	 * Method to set the permeability of an element
+	 * @param permeability
+	 */
 	public void setPermeability(Permeability permeability) {
 		this.permeability = permeability;
 	}
@@ -82,6 +101,11 @@ public class Element implements IElement {
 		return sprite;
 	}
 
+	/**
+	 * Method to set the sprite of an element
+	 * @param sprite
+	 * 			the sprite of an element
+	 */
 	public void setSprite(ISprite sprite) {
 		this.sprite = sprite;
 	}

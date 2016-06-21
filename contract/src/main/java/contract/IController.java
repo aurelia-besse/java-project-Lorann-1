@@ -1,24 +1,20 @@
 package contract;
 
+import java.awt.event.KeyEvent;
+
 /**
- * The Interface IController.
- *
- * @author Jean-Aymeric Diet
- */
+ * <b>The Interface IController.</b>
+ * @author Aurelia
+ * @version 16.06.2016
+ * */
 public interface IController {
 
-	void orderPerform(ControllerOrder keyCodeToControllerOrder);
-
 	/**
-	 * Control.
+	 * Method for KeyEvent
+	 * @param e 
+	 * 		it's a key Event
 	 */
-	//public void control();
+	public void keyEvents(KeyEvent e);
+	public void update();
 
-	/**
-	 * Order perform.
-	 *
-	 * @param controllerOrder
-	 *          the controller order
-	 */
-	//public void orderPerform(ControllerOrder controllerOrder);
 }

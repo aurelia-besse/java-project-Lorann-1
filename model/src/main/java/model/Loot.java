@@ -8,7 +8,7 @@ import contract.Permeability;
 * The class Loot consists to create many object with:
 * <ul>
 * <li>A url to connect the loot to an image format . png.</li>
-* <li>And a list to give him a permeability or not.</li>
+* <li>And a list to give him a permeability.</li>
 * </ul>
 * </p>
 * 

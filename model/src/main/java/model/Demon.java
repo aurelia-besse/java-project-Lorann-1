@@ -5,11 +5,11 @@ import contract.Permeability;
 
 /**Demon is the class representative the artificial intelligence of game that one should avoid/b>
  * <p>
- * The Demon consists to create an object Demon with :
+ * The Demon consists to instantiate an object Demon with :
  * <ul>
  * <li>An x and y coordinates to locate on a map.</li>
  * <li>A url to connect the Demon to an image format . png.</li>
- * <li>And a list to give him a permeability or not.</li>
+ * <li>And a list to give him a permeability.</li>
  * </ul>
  * </p>
  * 
@@ -19,6 +19,7 @@ import contract.Permeability;
 public class Demon extends MobileElement implements IDemon {
 
 	/**
+	 * Initialize the demon
 	 * @param x
 	 * 			The x position of the demon on a landmark o,x,y.
 	 * 			It can be changed by artificial intelligence.
