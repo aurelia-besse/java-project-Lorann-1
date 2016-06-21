@@ -62,13 +62,13 @@ public interface IMap {
 	
 	/**
 	 * Recovers Lorann in the map
-	 * @return the hero
+	 * @return Lorann
 	 */
 	public IElement getLorann();
 	
 	/**
 	 * Method to set Lorann in the map
-	 * @param hero 
+	 * @param lorann
 	 * 			It's an element			
 	 */
 	public void setLorann(IElement lorann);

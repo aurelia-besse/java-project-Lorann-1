@@ -1,8 +1,7 @@
 package contract;
 
 /**
- * <b>The Enum SpellState.</b>
- * 
+ *<b>The Enum SpellState.</b>
  * @author Arthur
  * @version 16.06.2016
  */

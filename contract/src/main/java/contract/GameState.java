@@ -1,7 +1,6 @@
 package contract;
 /**
- * The Enum GameState.
- * 
+ * <b>The Enum GameState.</b>
  * @author Aurelia
  * @version 19.06.2016
  */

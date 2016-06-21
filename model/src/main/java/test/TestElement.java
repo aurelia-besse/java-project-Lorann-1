@@ -5,9 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import contract.Permeability;
-
+/**
+ * 
+ * @author Adrien
+ * @version 16.06.2016
+ *
+ */
 public class TestElement {
 
+	/**
+	 * test method for {@link model.Element#getX()}
+	 */
 	@Test
 	public void testGetX() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -17,6 +25,9 @@ public class TestElement {
 		assertEquals(x,element.getX());
 	}
 
+	/**
+	 * test method for {@link model.Element#setX(int)}
+	 */
 	@Test
 	public void testSetX() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -26,6 +37,9 @@ public class TestElement {
 		assertEquals(x,element.getX());
 	}
 
+	/**
+	 * test method for {@link model.Element#getY()}
+	 */
 	@Test
 	public void testGetY() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -35,6 +49,9 @@ public class TestElement {
 		assertEquals(y, element.getY());
 	}
 
+	/**
+	 * test method for {@link model.Element#setY(int)}
+	 */
 	@Test
 	public void testSetY() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -44,6 +61,9 @@ public class TestElement {
 		assertEquals(y,element.getY());
 	}
 	
+	/**
+	 * test method for {@link model.Element#setPosition(int, int)}
+	 */
 	@Test
 	public void testSetPosition(){
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -54,6 +74,10 @@ public class TestElement {
 		assertEquals(x,element.getX());
 		assertEquals(y,element.getY());
 	}
+	
+	/**
+	 * test method for {@link model.Element#getPermeability()}
+	 */
 	@Test
 	public void testGetPermeability() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -70,6 +94,9 @@ public class TestElement {
 		
 	}
 
+	/**
+	 * test method for {@link model.Element#setPermeability(Permeability)}
+	 */
 	@Test
 	public void testSetPermeability() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -89,6 +116,9 @@ public class TestElement {
 		}
 	}
 
+	/**
+	 * test method for {@link model.Element#getSprite()}
+	 */
 	@Test
 	public void testGetSprite() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");
@@ -96,6 +126,9 @@ public class TestElement {
 		assertEquals(image, element.getSprite());
 	}
 
+	/**
+	 * test method for {@link model.Element#setSprite(contract.ISprite)}
+	 */
 	@Test
 	public void testSetSprite() {
 		model.Sprite image = new model.Sprite("sprite/bone.png");

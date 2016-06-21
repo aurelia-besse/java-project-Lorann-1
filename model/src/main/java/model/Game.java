@@ -12,13 +12,12 @@ import contract.*;
 
 /**
 *<b>The Game class represents the entire game</b>
-* <p>
+*The Game class represents the entire game
 * The class Game consists to:
 * <ul>
 * <li>Download the map</li>
 * <li>Download the database</li>
 * </ul>
-* </p>
 * @author Aurelia
 * @version 16.06.16
 */

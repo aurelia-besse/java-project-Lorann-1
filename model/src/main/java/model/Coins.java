@@ -5,15 +5,12 @@ import contract.Permeability;
 
 /**
  * <b> The coins class represents a loot that can be retrieve to earn points </b>
- * <p>
  * The class coins consists to instantiate an object coins with:
  * <ul>
  * <li>An x and y coordinates to locate on a map.</li>
  * <li>A url to connect the coins to an image format . png.</li>
  * <li>And a list to give him a permeability.</li>
- * </ul>
- * </p>
- * 
+ * </ul> 
  * @author Arthur
  * @version 17.06.16
  */

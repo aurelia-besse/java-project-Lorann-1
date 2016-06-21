@@ -1,7 +1,7 @@
 package contract;
 
 /**
- * <b>The Interface ILorann.</b> 
+ * <b>The Interface ILorann.</b>
  * @author Arthur
  * @version 16.06.2016
  */
@@ -27,7 +27,7 @@ public interface ILorann {
 	public SpellState getPossessionSpell();
 	/**
 	 * Method to update the possession of spell
-	 * @param spellstate
+	 * @param spellState
 	 * 				It's a SpellState
 	 */
 	public void setPossessionSpell(SpellState spellState);

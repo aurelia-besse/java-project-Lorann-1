@@ -6,15 +6,12 @@ import contract.SpellState;
 import contract.LorannState;
 /**
 *<b>The Lorann class represents the main character that the user plays</b>
-* <p>
 * The class Lorann consists to instantiate an object Lorann with:
 * <ul>
 * <li>An x and y coordinates to locate on a map at the start of the game.</li>
 * <li>A url to connect the character to an image format . png.</li>
 * <li>A permeability</li>
 * </ul>
-* </p>
-* 
 * @author Arthur
 * @version 17.06.16
 */

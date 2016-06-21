@@ -1,19 +1,17 @@
 package model;
 
 import contract.DoorState;
+
 import contract.IDoor;
 import contract.Permeability;
-
 /**
  * <b> The Door class represents the access to the end of the level </b>
- * <p>
  * The class Door consists to instantiate an object Door with:
  * <ul>
  * <li>An x and y coordinates to locate on a map.</li>
  * <li>A url to connect the door to an image format . png.</li>
  * <li>And a list to give him a permeability.</li>
  * </ul>
- * </p>
  * 
  * @author Arthur
  * @version 17.06.16

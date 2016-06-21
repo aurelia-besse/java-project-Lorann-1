@@ -8,15 +8,12 @@ import contract.ISprite;
 import contract.Permeability;
 
 /**
-* <p>
 * The Element class introduces elements based on 3 criteria :
-* <ul>
+*<ul>
 * <li>An x and y coordinates to locate on a map at the start of the game.</li>
 * <li>A url to connect the various images format . png.</li>
 * <li>And a list to give him a permeability.</li>
 * </ul>
-* </p>
-* 
 * @author Aurelia
 * @version 15.06.2016
  */

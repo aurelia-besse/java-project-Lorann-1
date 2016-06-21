@@ -8,7 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import model.Game;
-
+/**
+ * 
+ * @author Adrien
+ * @version 20.06.2016
+ *
+ */
 public class TestGame {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -25,18 +30,26 @@ public class TestGame {
 	@After
 	public void tearDown() throws Exception {
 	}
-	
+	/**
+	 * test method for {@link model.Game#Game()}
+	 */
 	@Test
 	public void testGame(){
 		assertNotNull(new Game());
 	}
 	
+	/**
+	 * test method for {@link model.Game#getId()}
+	 */
 	@Test
 	public void testGetId(){
 		model.Game game = new model.Game();
 		assertEquals(game.getId(), game.id);
 	}
 	
+	/**
+	 * test method for {@link model.Game#setId(int)}
+	 */
 	@Test
 	public void testSetId(){
 		int rand;
@@ -47,6 +60,9 @@ public class TestGame {
 		game.setId(rand);
 	}
 	
+	/**
+	 * test method for {@link model.Game#getScore()}
+	 */
 	@Test
 	public void testGetScore(){
 		model.Game game = new model.Game();
@@ -55,6 +71,9 @@ public class TestGame {
 		assertEquals(scoreSetted, game.getScore());
 	}
 	
+	/**
+	 * test method for {@link model.Game#setScore(int)}
+	 */
 	@Test
 	public void testSetScore(){
 		model.Game game = new model.Game();

@@ -1,7 +1,7 @@
 package contract;
 
 /**
- *<b>The Interface IView.</b> 
+ *<b>The Interface IView.</b>
  * @author Aurelia
  * @version 16.06.2016
  */

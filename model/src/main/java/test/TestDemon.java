@@ -2,9 +2,17 @@ package test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-
+/**
+ * 
+ * @author Adrien
+ * @version 16.06.2016
+ *
+ */
 public class TestDemon {
 
+	/**
+	 * test method for {@link model.Demon#Demon(int, int, String)}
+	 */
 	@Test
 	public void testDemon() {
 		double x = Math.random();

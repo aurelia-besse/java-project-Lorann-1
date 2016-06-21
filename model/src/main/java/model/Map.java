@@ -6,14 +6,11 @@ import contract.*;
 
 /**
 *<b>The Map class represents the whole map</b>
-* <p>
 * The class Map consists to instantiate an object with :
 * <ul>
 * <li>A dimension of map.</li>
 * <li>A variety of different element.</li>
 * </ul>
-* </p>
-* 
 * @author Aurelia
 * @version 17.06.16
 */
@@ -66,7 +63,8 @@ public class Map implements IMap {
 	
 	/**
 	 * Updates the height of the map
-	 * @param the height of the map
+	 * @param height 
+	 * 			the height of the map
 	 */
 	public void setHeight(int height) {
 		this.height = height;

@@ -4,14 +4,12 @@ import contract.Permeability;
 
 /**
 *<b>The Loot class represents all objects that the user can take</b>
-* <p>
+*The Loot class represents all objects that the user can take
 * The class Loot consists to create many object with:
 * <ul>
 * <li>A url to connect the loot to an image format . png.</li>
 * <li>And a list to give him a permeability.</li>
 * </ul>
-* </p>
-* 
 * @author Arthur
 * @version 17.06.16
 */

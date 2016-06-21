@@ -8,15 +8,12 @@ import contract.SpellState;
 
 /**
 *<b>The Spell class represents the sorcery that the player can launch</b>
-* <p>
 * The class Spell consists to instantiate an object Spell with:
 * <ul>
 * <li>An x and y coordinates to locate on a map the spell.</li>
 * <li>A url to connect the spell to an image format . png.</li>
 * <li>A permeability</li>
 * </ul>
-* </p>
-* 
 * @author Aurelia
 * @version 17.06.16
 */

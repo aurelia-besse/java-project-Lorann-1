@@ -3,16 +3,13 @@ package model;
 import contract.IFloor;
 import contract.Permeability;
 /**
-*<b>The Floor class represents the wallpaper of the game</b>
-* <p>
+**<b>The Floor class represents the wallpaper of the game</b>
 * The class Floor consists to instantiate an object Floor with:
 * <ul>
 * <li>An x and y coordinates to locate on a map.</li>
 * <li>A url to connect the floor to an image format . png.</li>
 * <li>And a list to give him a permeability.</li>
 * </ul>
-* </p>
-* 
 * @author Arthur
 * @version 17.06.16
 */

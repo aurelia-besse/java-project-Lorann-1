@@ -9,10 +9,8 @@ import contract.IAnimateSprite;
 
 /**
 *<b>The AnimateSprite class animates pictures</b>
-* <p>
+*The AnimateSprite class animates pictures
 * The class AnimateSprite consists to make a movement for a picture
-* <ul>
-* </p>
 * @author Aurelia
 * @version 20.06.16
 */

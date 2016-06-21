@@ -69,14 +69,14 @@ public interface IModel {
 	
 	/**
 	 * Create the spell depending on the position of the character
-	 * @param hero 
+	 * @param lorann 
 	 * 			It's an element
 	 */
 	public void addSpells(IElement lorann);
 	
 	/**
 	 * Adds floor 
-	 * @param hero 
+	 * @param lorann
 	 * 			It's an element
 	 * @param x
 	 * 			The x position of the floor on a landmark o,x,y.
@@ -93,7 +93,7 @@ public interface IModel {
 	
 	/**
 	 * Updates the game state
-	 * @param gamestate
+	 * @param gameState
 	 * 				It's a GameState
 	 */
 	public void setGameState(GameState gameState);
@@ -107,7 +107,7 @@ public interface IModel {
 	
 	/**
 	 * Displays the win!
-	 * @param grapihcs
+	 * @param graphics
 	 * 				Give the picture for the win
 	 */
 	public void Congratulations(Graphics graphics);

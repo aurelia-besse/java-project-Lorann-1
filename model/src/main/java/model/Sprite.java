@@ -6,13 +6,12 @@ import javax.imageio.ImageIO;
 import contract.ISprite;
 
 /**
- * <b>This class Sprite is used to assign a picture to an item</b>
- * <p>
+  * <b>This class Sprite is used to assign a picture to an item</b>
+ * This class Sprite is used to assign a picture to an item
  * The Sprite consists to:
  * <ul>
  * <li>Assigned an image with an url</li>
  * </ul>
- * </p>
  * @author Arthur
  * @version 17.06.2016
  */
@@ -22,9 +21,8 @@ public class Sprite implements ISprite {
 private Image image;
 
 /**
- * 
+ * Initialize a sprite
  * @param url
- * 				An url for one image
  */
 public Sprite(String url) {
 		

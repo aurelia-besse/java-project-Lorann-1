@@ -2,14 +2,18 @@ package controller;
 
 import contract.IController;
 
-
+/**
+ * 
+ * @author Aurelia
+ * @version 17.06.2016
+ */
 public class Ticks implements Runnable{
 
 	private IController controller;
+	
 	/**
-	 * 
-	 * @param controler
-	 * 				Uses the controler
+	 * Initialize
+	 * @param controller
 	 */
 	public Ticks( IController controller){
 		this.controller = controller;

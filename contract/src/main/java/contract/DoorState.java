@@ -2,14 +2,15 @@ package contract;
 
 /**
  * <b>DoorState is an enumerated type.</b>
- * <p>
+ * DoorState is an enumerated type.
  * There are two types of door state :
  * <ul>
  * <li>OPEN</li>
  * <li>CLOSE</li>
  * </ul>
- * </p>
  * 
+ * 	OPEN
+ * 	CLOSE
  * @author Arthur
  * @version 17.06.16
  */

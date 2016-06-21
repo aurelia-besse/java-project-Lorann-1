@@ -3,7 +3,7 @@ package contract;
 import contract.SpellState;
 
 /**
- *<b>The Interface ISpell.</b> 
+ *<b>The Interface ISpell. </b>
  * @author Arthur
  * @version 16.06.2016
  */
