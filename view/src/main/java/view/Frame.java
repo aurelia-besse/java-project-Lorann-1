@@ -10,8 +10,7 @@ import contract.IView;
 import contract.IModel;
 
 /** 
- * <b>This class Frame is used to create the game window</b>
- * 
+ * This class Frame is used to create the game window
  * @author Aurelia
  * @version 16.06.16
  */

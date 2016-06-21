@@ -10,6 +10,12 @@ import org.junit.Test;
 
 import controller.Controller;
 
+/**
+ * 
+ * @author Adrien
+ * @version 16.06.2016
+ *
+ */
 public class TestController {
 
 	@BeforeClass
@@ -28,6 +34,9 @@ public class TestController {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * test method for {@link controller.Controller#Controller(contract.IModel, contract.IView)}
+	 */
 	@Test
 	public void testController() {
 		assertNotNull(new Controller(null, null));

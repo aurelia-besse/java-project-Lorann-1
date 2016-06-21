@@ -9,13 +9,25 @@ import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
+/**
+ * 
+ * @author Adrien
+ * @version 16.06.2016
+ *
+ */
 public class TestSprite {
 
+	/**
+	 * test method for {@link model.Sprite#Sprite(String)}
+	 */
 	@Test
 	public void testSprite() {
 		assertNotNull(new model.Sprite("sprite/bone.png"));
 	}
 
+	/**
+	 * test method for {@link model.Sprite#getImage()}
+	 */
 	@Test
 	public void testGetImage() {
 		Image temp;
@@ -29,6 +41,9 @@ public class TestSprite {
 		}
 	}
 	
+	/**
+	 * test method for {@link model.Sprite#setImage(String)}
+	 */
 	@Test
 	public void testSetImage(){
 		Image image = null;

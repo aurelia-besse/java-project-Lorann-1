@@ -9,7 +9,12 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import contract.IController;
-
+/**
+ * 
+ * @author Adrien
+ * @version 16.06.2016
+ *
+ */
 public class TestTicks {
 
 	@BeforeClass
@@ -28,12 +33,18 @@ public class TestTicks {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * test method for {@link controller.Ticks#Ticks(IController)}
+	 */
 	@Test
 	public void testTicks() {
 		IController controller = null;
 		assertNotNull(new controller.Ticks(controller));
 	}
 
+	/**
+	 * test method for {@link controller.Ticks#run()}
+	 */
 	@Test
 	public void testRun() {
 		IController controller = null;

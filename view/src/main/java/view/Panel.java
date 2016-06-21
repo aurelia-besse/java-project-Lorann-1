@@ -12,8 +12,7 @@ import javax.swing.JPanel;
 import contract.*;
 
 /** 
- * <b>This class panel is used to display the different elements in the game window</b>
- * 
+ * This class panel is used to display the different elements in the game window 
  * @author Aurelia
  * @version 16.06.2016
  */
@@ -36,6 +35,10 @@ public class Panel extends JPanel implements Observer{
 		
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g){
 		clearAll(g);
 		int x = 0;
@@ -80,15 +83,30 @@ public class Panel extends JPanel implements Observer{
 			
 	}
 
+	/**
+	 * Method that draw an image
+	 * @param g
+	 * @param image
+	 * @param x
+	 * @param y
+	 */
 	private void design(Graphics g, Image image, int x, int y) {
 		g.drawImage(image, x*32, y*32, 32, 32, null);
 	}
 	
+	/**
+	 * Method that clear the screen
+	 * @param g
+	 */
 	private void clearAll(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, IView.WIDTH, IView.HEIGHT);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+	 */
 	public void update(Observable o, Object arg) {
 		
 		
