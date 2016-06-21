@@ -21,10 +21,10 @@ public class Map implements IMap {
 
 	private int width;
 	private int height;
-	private IElement		elements[][];
-	private ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
-	private IElement lorann;
-	private IElement spell;
+	public IElement elements[][];
+	public ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
+	public IElement lorann;
+	public IElement spell;
 	
 	/**
 	 * Initialize the map
@@ -77,7 +77,7 @@ public class Map implements IMap {
 	 * @see contract.IMap#getElements()
 	 */
 	public IElement[][] getElements() {
-		return elements;
+		return this.elements;
 	}
 	
 	/**
@@ -94,7 +94,7 @@ public class Map implements IMap {
 	 * @see contract.IMap#getMobiles()
 	 */
 	public ArrayList<IMobileElement> getMobiles() {
-		return mobiles;
+		return this.mobiles;
 	}
 	
 	/*
@@ -127,7 +127,7 @@ public class Map implements IMap {
 	
 	/*
 	 * (non-Javadoc)
-	 * @see contract.IMap#getHero()
+	 * @see contract.IMap#getLorann()
 	 */
 	public IElement getLorann() {
 		return lorann;
@@ -156,9 +156,4 @@ public class Map implements IMap {
 	public void setSpell(IElement spell) {
 		this.spell = spell;
 	}
-	
-	
-	
-	
-	
 }

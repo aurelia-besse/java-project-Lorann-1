@@ -8,7 +8,7 @@ public class TestDoor {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		assertNotNull(new model.Coins(0,0,"sprite/gate_closed.png"));
 	}
 
 }

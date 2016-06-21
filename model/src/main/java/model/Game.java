@@ -24,11 +24,12 @@ import contract.*;
 */
 public class Game extends Observable implements IModel {
 
+	public IMap map;
 	private DBGame dbgame;
 	private GameState gameState;
 	private ArrayList<IMap> maps;
-	private int id ;
-	private int score = 0;
+	public int id ;
+	public int score = 0;
 
 	/**
 	 * Initialize the game
@@ -102,6 +103,7 @@ public class Game extends Observable implements IModel {
 		}
 		change();
 	}
+
 	/**
 	 * Method to load map
 	 * @param idMap

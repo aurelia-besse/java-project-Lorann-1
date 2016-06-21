@@ -55,9 +55,4 @@ public class AnimateSprite extends Sprite implements IAnimateSprite{
 	public Image getImage() {
         return this.images[this.next];
     }
-
-	
-	
-	
-
 }

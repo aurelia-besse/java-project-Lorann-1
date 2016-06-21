@@ -26,7 +26,7 @@ private Image image;
  * @param url
  * 				An url for one image
  */
-public Sprite( String url) {
+public Sprite(String url) {
 		
 		try {
 			this.image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(url));
