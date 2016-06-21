@@ -18,8 +18,8 @@ import contract.IAnimateSprite;
 */
 public class AnimateSprite extends Sprite implements IAnimateSprite{
 
-	private Image[] images;
-	private int next;
+	public Image[] images;
+	public int next;
 	/**
 	 * 
 	 * @param url

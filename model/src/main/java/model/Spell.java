@@ -21,7 +21,7 @@ import contract.SpellState;
 * @version 17.06.16
 */
 public class Spell extends MobileElement implements ISpell {
-	private SpellState state;
+	public SpellState state;
 	
 	/**
 	 * Initialize the spell and characteristics of spell
@@ -57,8 +57,4 @@ public class Spell extends MobileElement implements ISpell {
 	public void setState(SpellState state) {
 		this.state = state;
 	}
-	
-	
 }
-
-

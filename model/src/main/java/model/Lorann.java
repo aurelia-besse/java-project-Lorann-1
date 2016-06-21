@@ -20,8 +20,8 @@ import contract.LorannState;
 */
 public class Lorann extends MobileElement implements ILorann {
 	
-	private LorannState state = LorannState.DOWN;
-	private SpellState spellState;
+	public LorannState state = LorannState.DOWN;
+	public SpellState spellState;
 	
 	
 	/**
@@ -84,11 +84,4 @@ public class Lorann extends MobileElement implements ILorann {
 	public void setPossessionSpell(SpellState spellState) {
 		this.spellState = spellState;
 	}
-
-	
-	
-	
-	
-	
-
 }
