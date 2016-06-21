@@ -5,9 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import contract.IMap;
+import model.Game;
 
 public class TestGame {
 
+	@Test
+	public void testGame(){
+		assertNotNull(new Game());
+	}
+	
+	
+	
 	@Test
 	public void testGetMap() {
 		

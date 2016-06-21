@@ -10,7 +10,7 @@ public class TestElement {
 
 	@Test
 	public void testGetX() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		model.Element element = new model.Element(Permeability.BLOCKING , image);
 		int x = (int)(Math.random()*10);
 		element.x = x;
@@ -19,7 +19,7 @@ public class TestElement {
 
 	@Test
 	public void testSetX() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		model.Element element = new model.Element(Permeability.BLOCKING , image);
 		int x = (int)(Math.random()*10);
 		element.setX(x);
@@ -28,7 +28,7 @@ public class TestElement {
 
 	@Test
 	public void testGetY() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		model.Element element = new model.Element(Permeability.BLOCKING , image);
 		int y = (int)(Math.random()*10);
 		element.y = y;
@@ -37,16 +37,26 @@ public class TestElement {
 
 	@Test
 	public void testSetY() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		model.Element element = new model.Element(Permeability.BLOCKING , image);
 		int y = (int)(Math.random()*10);
 		element.setY(y);
 		assertEquals(y,element.getY());
 	}
-
+	
+	@Test
+	public void testSetPosition(){
+		model.Sprite image = new model.Sprite("sprite/bone.png");
+		model.Element element = new model.Element(Permeability.BLOCKING , image);
+		int x = (int)(Math.random()*10);
+		int y = (int)(Math.random()*10);
+		element.setPosition(x, y);
+		assertEquals(x,element.getX());
+		assertEquals(y,element.getY());
+	}
 	@Test
 	public void testGetPermeability() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		double rand = Math.random();
 		if (rand < 0.5){
 			model.Element element = new model.Element(Permeability.BLOCKING , image);
@@ -62,7 +72,7 @@ public class TestElement {
 
 	@Test
 	public void testSetPermeability() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		double rand = Math.random();
 		if (rand < 0.5){
 			model.Element element = new model.Element(Permeability.BLOCKING , image);
@@ -81,18 +91,17 @@ public class TestElement {
 
 	@Test
 	public void testGetSprite() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
+		model.Sprite image = new model.Sprite("sprite/bone.png");
 		model.Element element = new model.Element(Permeability.BLOCKING , image);
 		assertEquals(image, element.getSprite());
 	}
 
 	@Test
 	public void testSetSprite() {
-		model.Sprite image = new model.Sprite("https://fr.wikipedia.org/wiki/Flanby#/media/File:Flanby_n01.jpg");
-		model.Sprite image2 = new model.Sprite("http://i21.servimg.com/u/f21/15/31/14/80/ludort11.png");		
+		model.Sprite image = new model.Sprite("sprite/bone.png");
+		model.Sprite image2 = new model.Sprite("sprite/vertical_bone.png");		
 		model.Element element = new model.Element(Permeability.BLOCKING , image);
 		element.setSprite(image2);
 		assertEquals(image2, element.getSprite());
 	}
-
 }

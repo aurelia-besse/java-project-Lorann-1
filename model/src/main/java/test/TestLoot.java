@@ -11,7 +11,7 @@ public class TestLoot {
 
 	@Test
 	public void testLoot() {
-		assertNotNull(new Loot("C:/Users/adrie/Pictures/conneries/Auto congratulation/MOI/moi.jpg", Permeability.BLOCKING));
+		assertNotNull(new Loot("sprite/purse.png", Permeability.BLOCKING));
 	}
 
 }

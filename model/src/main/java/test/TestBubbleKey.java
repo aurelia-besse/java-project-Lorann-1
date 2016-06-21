@@ -10,6 +10,6 @@ public class TestBubbleKey {
 
 	@Test
 	public void testBubbleKey() {
-		assertNotNull(new BubbleKey(0,0,"C:/Users/adrie/Pictures/conneries/Auto congratulation/MOI/moi.jpg"));
+		assertNotNull(new BubbleKey(0,0, "sprite/crystal_ball.png"));
 	}
 }

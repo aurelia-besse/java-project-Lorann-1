@@ -9,7 +9,7 @@ import contract.ISprite;
 
 public class Sprite implements ISprite {
 private Image image;
-public Sprite( String url) {
+public Sprite(String url) {
 		
 		try {
 			this.image = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(url));

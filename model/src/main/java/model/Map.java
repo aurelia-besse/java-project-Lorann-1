@@ -25,7 +25,7 @@ public class Map implements IMap {
 	public IElement elements[][];
 	public ArrayList<IMobileElement> mobiles = new ArrayList<IMobileElement>();
 	public IElement hero;
-	private IElement spell;
+	public IElement spell;
 	
 	/**
 	 * 
