@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Observable;
-import contract.IGame;
-import contract.IMap;
 import javax.imageio.ImageIO;
 import contract.*;
 
@@ -24,13 +22,14 @@ import contract.*;
 * @author Aurelia
 * @version 16.06.16
 */
-public class Game extends Observable implements IGame {
+public class Game extends Observable implements IModel {
 
 	public IMap map;
 	private DBGame dbgame;
 	private GameState gameState;
 	private ArrayList<IMap> maps;
-	private int id;
+	private int id ;
+	private int score = 0;
 
 	/**
 	 * Initialize the game
@@ -74,6 +73,25 @@ public class Game extends Observable implements IGame {
 		this.id = id;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getScore()
+	 */
+	public int getScore() {
+		return score;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#setScore(int)
+	 */
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	/**
+	 * Method to initialize map
+	 */
 	private void initMap() {
 		try {
 			ResultSet resultMaps = dbgame.procedure("{call allMap()}");
@@ -85,6 +103,12 @@ public class Game extends Observable implements IGame {
 		}
 		change();
 	}
+
+	/**
+	 * Method to load map
+	 * @param idMap
+	 * 			It's the idMap in the database
+	 */
 	public void loadsMap(int idMap){
 		Map map = new Map(20,12);
 		try {
@@ -93,7 +117,8 @@ public class Game extends Observable implements IGame {
 				int x = result.getInt("x");
 				int y = result.getInt("y");
 				int idElement = result.getInt("IDelement");
-				String url = result.getString("url");				switch(idElement){
+				String url = result.getString("url");
+				switch(idElement){
 				case 1: case 2: case 3:
 					map.addElement(new Wall(x, y,url),x,y);
 					break;
@@ -103,7 +128,6 @@ public class Game extends Observable implements IGame {
 				case 6:
 					IElement door = new Door(x, y, url);
 					map.addElement(door, x, y);
-					((IDoor)door).setDoorState(DoorState.CLOSE);
 					break;
 				case 7:
 					map.setLorann(new Lorann(x, y,url));

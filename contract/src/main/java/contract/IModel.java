@@ -8,12 +8,24 @@ import java.util.Observer;
 import contract.IMap;
 
 /**
- * <b>The Interface IGame.</b>
+ * <b>The Interface IModel.</b>
  * @author Aurelia
  * @version 16.06.2016
  */
-public interface IGame {
+public interface IModel {
 
+	/**
+	 * Method to get the score
+	 * @return
+	 */
+	public int getScore();
+	
+	/**
+	 * Method to set the score
+	 * @param score
+	 */
+	public void setScore(int score); 
+	
 	/**
 	 * Method to get the id of the map
 	 * @return the id

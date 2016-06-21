@@ -6,8 +6,8 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import contract.IController;
-import contract.IFrame;
-import contract.IGame;
+import contract.IView;
+import contract.IModel;
 
 /** 
  * <b>This class Frame is used to create the game window</b>
@@ -15,14 +15,12 @@ import contract.IGame;
  * @author Aurelia
  * @version 16.06.16
  */
-public class Frame extends JFrame implements IFrame, KeyListener{
+public class Frame extends JFrame implements IView, KeyListener{
 
 
 	private static final long serialVersionUID = 2773168040909497332L;
 	private Panel panel;
-	int HEIGHT = 412;
-	int WIDTH = 646;
-	IGame game;
+	IModel game;
 	IController controller;
 	
 	/**
@@ -30,12 +28,12 @@ public class Frame extends JFrame implements IFrame, KeyListener{
 	 * @param game
 	 * 		It's the game 	
 	 */
-	public Frame(IGame game){
+	public Frame(IModel game){
 		this.game = game;
 		this.addKeyListener(this);
 		this.setTitle("Lorann");
 		
-		this.setSize(IFrame.WIDTH, IFrame.HEIGHT);
+		this.setSize(IView.WIDTH, IView.HEIGHT);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
 		panel = new Panel(this);

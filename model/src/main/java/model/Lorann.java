@@ -23,6 +23,7 @@ public class Lorann extends MobileElement implements ILorann {
 	private LorannState state = LorannState.DOWN;
 	private SpellState spellState;
 	
+	
 	/**
 	 * Initialize Lorann and characteristics of Lorann 
 	 * @param x
@@ -83,6 +84,10 @@ public class Lorann extends MobileElement implements ILorann {
 	public void setPossessionSpell(SpellState spellState) {
 		this.spellState = spellState;
 	}
+
+	
+	
+	
 	
 	
 

@@ -31,4 +31,6 @@ public interface ILorann {
 	 * 				It's a SpellState
 	 */
 	public void setPossessionSpell(SpellState spellState);
+	
+	
 }
