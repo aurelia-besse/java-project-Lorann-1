@@ -10,6 +10,6 @@ public class TestFloor {
 
 	@Test
 	public void testFloor() {
-		assertNotNull(new Floor(0,0,"sprite/floor.png"));
+		assertNotNull(new Floor(0,0,"sprite/bone.png"));
 	}
 }
