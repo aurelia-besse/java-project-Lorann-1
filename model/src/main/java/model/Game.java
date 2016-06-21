@@ -22,12 +22,12 @@ import contract.*;
 * @author Aurelia
 * @version 16.06.16
 */
-public class Game extends Observable implements IGame {
+public class Game extends Observable implements IModel {
 
 	private DBGame dbgame;
 	private GameState gameState;
 	private ArrayList<IMap> maps;
-	private int id;
+	private int id ;
 	private int score = 0;
 
 	/**

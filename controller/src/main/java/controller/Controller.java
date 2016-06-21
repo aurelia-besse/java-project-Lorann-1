@@ -10,8 +10,8 @@ import contract.*;
  */
 public class Controller implements IController {
 
-	private IGame model;
-	private IFrame frame;
+	private IModel model;
+	private IView frame;
 	
 	/**
 	 * Initialize the controller
@@ -20,7 +20,7 @@ public class Controller implements IController {
 	 * @param frame
 	 * 			Use the frame
 	 */
-	public Controller(IGame model, IFrame frame){
+	public Controller(IModel model, IView frame){
 		this.model = model;
 		this.frame = frame;
 		Thread t = new Thread(new Ticks(this));

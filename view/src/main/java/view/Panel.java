@@ -86,7 +86,7 @@ public class Panel extends JPanel implements Observer{
 	
 	private void clearAll(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, IFrame.WIDTH, IFrame.HEIGHT);
+		g.fillRect(0, 0, IView.WIDTH, IView.HEIGHT);
 	}
 	
 	public void update(Observable o, Object arg) {

@@ -8,11 +8,11 @@ import java.util.Observer;
 import contract.IMap;
 
 /**
- * <b>The Interface IGame.</b>
+ * <b>The Interface IModel.</b>
  * @author Aurelia
  * @version 16.06.2016
  */
-public interface IGame {
+public interface IModel {
 
 	/**
 	 * Method to get the score

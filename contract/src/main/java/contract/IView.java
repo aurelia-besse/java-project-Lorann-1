@@ -1,11 +1,11 @@
 package contract;
 
 /**
- *<b>The Interface IFrame.</b> 
+ *<b>The Interface IView.</b> 
  * @author Aurelia
  * @version 16.06.2016
  */
-public interface IFrame {
+public interface IView {
 
 	int HEIGHT = 460;
 	int WIDTH = 646;
