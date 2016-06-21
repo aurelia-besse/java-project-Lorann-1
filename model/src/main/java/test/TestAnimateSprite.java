@@ -2,8 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import model.AnimateSprite;
@@ -34,5 +32,4 @@ public class TestAnimateSprite {
 	public void testNextImage() {
 		fail("No test for this function yet");
 	}
-
 }
