@@ -46,7 +46,7 @@ public class Controller implements IController {
 	 */
 	public void keyEvents(KeyEvent e){
 		switch(e.getKeyCode()){
-			case KeyEvent.VK_UP : case KeyEvent.VK_A :
+			case KeyEvent.VK_UP : case KeyEvent.VK_Z :
 				moveLorann(1);
 				break;
 			case KeyEvent.VK_DOWN : case KeyEvent.VK_S :
@@ -66,7 +66,6 @@ public class Controller implements IController {
 					setSpellState(((ILorann)lorann).getState());
 				}
 				break;
-				
 		}
 	}
 	

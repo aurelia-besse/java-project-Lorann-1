@@ -19,7 +19,7 @@ import contract.ISprite;
 
 public class Sprite implements ISprite {
 	
-private Image image;
+public Image image;
 
 /**
  * 
