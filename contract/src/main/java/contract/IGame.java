@@ -15,6 +15,18 @@ import contract.IMap;
 public interface IGame {
 
 	/**
+	 * Method to get the score
+	 * @return
+	 */
+	public int getScore();
+	
+	/**
+	 * Method to set the score
+	 * @param score
+	 */
+	public void setScore(int score); 
+	
+	/**
 	 * Method to get the id of the map
 	 * @return the id
 	 */

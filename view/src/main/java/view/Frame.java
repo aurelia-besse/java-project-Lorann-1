@@ -20,8 +20,6 @@ public class Frame extends JFrame implements IFrame, KeyListener{
 
 	private static final long serialVersionUID = 2773168040909497332L;
 	private Panel panel;
-	int HEIGHT = 412;
-	int WIDTH = 646;
 	IGame game;
 	IController controller;
 	

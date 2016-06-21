@@ -137,6 +137,7 @@ public class Controller implements IController {
 		if(bubblekey instanceof IBubbleKey){
 			lorann.setPosition(x, y);
 			model.addFloor(lorann, x, y);
+			model.setScore(model.getScore()+400);
 			for(IElement[] e : model.getMap().getElements()){
 				for(IElement element : e){
 					if(element instanceof IDoor){
@@ -162,6 +163,7 @@ public class Controller implements IController {
 		if (coins instanceof ICoins){
 			lorann.setPosition(x, y);
 			model.addFloor(lorann, x, y);
+			model.setScore(model.getScore()+200);
 		}
 	}
 	
@@ -268,6 +270,7 @@ public class Controller implements IController {
 		}else if(spell!=null &&((IElement)demon).getX() == spell.getX() && ((IElement)demon).getY() == spell.getY()){
 			model.getMap().getMobiles().remove(demon);
 			model.getMap().setSpell(null);
+			model.setScore(model.getScore()+100);
 			((ILorann)model.getMap().getLorann()).setPossessionSpell(SpellState.NotThrow);
 		}
 	}

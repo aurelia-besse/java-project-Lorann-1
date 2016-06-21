@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.Observable;
@@ -42,41 +43,24 @@ public class Panel extends JPanel implements Observer{
 		for(IElement[] e : frame.game.getMap().getElements()){
 			int y = 0;
 			for(IElement element : e){
-					
 					if(element instanceof IWall){
-					
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}else if(element instanceof IBubbleKey){
-						
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}else if(element instanceof ICoins){
-						
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}else if(element instanceof IDoor){
-						
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}else if(element instanceof IDemon){
-						
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}else if(element instanceof ILorann){
-						
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}else if(element instanceof IFloor){
-						
 						design(g, element.getSprite().getImage(), x, y);
-						
 					}
-					
 				y++;
 			}
-			x++;
-			
+			x++;	
 		} 
 		for(IMobileElement demon : frame.game.getMap().getMobiles()){
 			design(g, ((IElement)demon).getSprite().getImage(), ((IElement)demon).getX(),((IElement)demon).getY());
@@ -90,6 +74,9 @@ public class Panel extends JPanel implements Observer{
 		}else if(frame.game.getGameState().equals(GameState.Congratulation)){
 			frame.game.Congratulations(g);
 		}
+		g.setColor(Color.blue);
+		g.setFont(new Font("Arial", Font.BOLD, 20));
+		g.drawString("Score : "+frame.game.getScore(), 20, 424);
 			
 	}
 
@@ -98,7 +85,7 @@ public class Panel extends JPanel implements Observer{
 	}
 	
 	private void clearAll(Graphics g) {
-		g.setColor(Color.white);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, IFrame.WIDTH, IFrame.HEIGHT);
 	}
 	

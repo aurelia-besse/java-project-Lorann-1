@@ -28,6 +28,7 @@ public class Game extends Observable implements IGame {
 	private GameState gameState;
 	private ArrayList<IMap> maps;
 	private int id;
+	private int score = 0;
 
 	/**
 	 * Initialize the game
@@ -71,6 +72,25 @@ public class Game extends Observable implements IGame {
 		this.id = id;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#getScore()
+	 */
+	public int getScore() {
+		return score;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IGame#setScore(int)
+	 */
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	/**
+	 * Method to initialize map
+	 */
 	private void initMap() {
 		try {
 			ResultSet resultMaps = dbgame.procedure("{call allMap()}");
@@ -82,7 +102,11 @@ public class Game extends Observable implements IGame {
 		}
 		change();
 	}
-	
+	/**
+	 * Method to load map
+	 * @param idMap
+	 * 			It's the idMap in the database
+	 */
 	public void loadsMap(int idMap){
 		Map map = new Map(20,12);
 		try {
