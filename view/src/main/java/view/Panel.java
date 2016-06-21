@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import contract.*;
 
 /** 
- * This class panel is used to run what is present in the game window
+ * <b>This class panel is used to display the different elements in the game window</b>
  * 
  * @author Aurelia
  * @version 16.06.2016

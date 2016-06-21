@@ -4,7 +4,10 @@ import java.awt.event.KeyEvent;
 
 
 import contract.*;
-
+/**
+ * @author Aurelia
+ * @version 15.06.2016
+ */
 public class Controller implements IController {
 
 	private IGame model;
@@ -37,7 +40,10 @@ public class Controller implements IController {
 		return model.getMap().getElement(x, y).getPermeability().equals(Permeability.BLOCKING);
 	}
 	
-	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IController#keyEvents(java.awt.event.KeyEvent)
+	 */
 	public void keyEvents(KeyEvent e){
 		switch(e.getKeyCode()){
 			case KeyEvent.VK_UP : case KeyEvent.VK_A :
@@ -65,34 +71,14 @@ public class Controller implements IController {
 	}
 	
 	/**
-	 * Update the state of Spell depending on the state of Lorann
-	 * @param state
-	 * 		the state of Lorann
-	 */
-	private void setSpellState(LorannState state){
-		IElement spell = model.getMap().getSpell();
-		if(state == LorannState.UP){
-			((ISpell)spell).setState(SpellState.UP);
-		}else if (state == LorannState.DOWN){
-			((ISpell)spell).setState(SpellState.DOWN);
-		}else if (state == LorannState.LEFT){
-			((ISpell)spell).setState(SpellState.LEFT);
-		}else if (state == LorannState.RIGHT){
-			((ISpell)spell).setState(SpellState.RIGHT);
-		}
-	}
-	
-	/**
 	 * Method to move Lorann in the map
 	 * @param state
 	 * 			the state of Lorann
 	 */
 	public void moveLorann(int state){
 		IElement lorann = model.getMap().getLorann();
-
 		int x = lorann.getX();
 		int y = lorann.getY();
-		
 		switch(state){
 			case 1:
 				((ILorann)lorann).setState(LorannState.UP);
@@ -192,7 +178,13 @@ public class Controller implements IController {
 		IElement door = model.getMap().getElement(x, y);
 		if (door instanceof IDoor){
 			if(((IDoor)door).getDoorState().equals(DoorState.OPEN)){
-				model.setGameState(GameState.Congratulation);
+				int id = model.getId();
+				if ( id+1 < model.getMaps().size()){
+					model.setId(id +1);
+				}else {
+					model.setGameState(GameState.Congratulation);
+				}
+				System.out.println(model.getId());
 				lorann.setPosition(x, y);
 			}else if (((IDoor)door).getDoorState().equals(DoorState.CLOSE)){
 				model.setGameState(GameState.GAMEOVER);
@@ -215,25 +207,87 @@ public class Controller implements IController {
 	 * Method to move demon
 	 */
 	public void moveDemon(){		
-			for(IMobileElement demon : model.getMap().getMobiles()){
-				double random = Math.random();
-				int x = ((IElement)demon).getX();
-				int y = ((IElement)demon).getY();
-				if(((IElement)demon).getX()== model.getMap().getLorann().getX() && ((IElement)demon).getY()== model.getMap().getLorann().getY()){
-					System.out.println(model.getMap().getLorann() + "mort");
-					model.setGameState(GameState.GAMEOVER);
-
-				}
-				if(random <= .25d && !getBlocked(x,y -1)){
+		for(IMobileElement demon : model.getMap().getMobiles()){
+			int x = ((IElement)demon).getX();
+			int y = ((IElement)demon).getY();
+			IElement lorann = model.getMap().getLorann();
+			int x2 = lorann.getX();
+			int y2 = lorann.getY();
+			demonContact(demon, lorann);
+				
+			if(x < x2 && !getBlocked(x+1,y)){
+				((IElement)demon).setPosition(x+1, y );
+			}else if (x > x2 && !getBlocked(x-1,y)){
+				((IElement)demon).setPosition(x-1, y);
+			}else if (x < x2 && getBlocked(x+1,y)){
+				if(y < y2 && !getBlocked(x,y+1)){
+					((IElement)demon).setPosition(x, y+1);
+				}else if (y > y2 && !getBlocked(x,y -1)){
 					((IElement)demon).setPosition(x, y -1);
-				}else if (random <= .50d && !getBlocked(x,y +1)){
-					((IElement)demon).setPosition(x, y +1);
-				}else if (random <= .75d && !getBlocked(x -1,y )){
-					((IElement)demon).setPosition(x -1,y);
-				}else if (random <= .75d && !getBlocked(x +1,y )){
-					((IElement)demon).setPosition(x +1,y);
-				}model.change();	
+				}
+			}else if (x > x2 && getBlocked(x-1,y)){
+				if(y < y2 && !getBlocked(x,y+1)){
+					((IElement)demon).setPosition(x, y+1);
+				}else if (y > y2 && !getBlocked(x,y -1)){
+					((IElement)demon).setPosition(x, y -1);
+				}
 			}
+
+			if(y < y2 && !getBlocked(x,y+1)){
+				((IElement)demon).setPosition(x, y+1);
+			}else if (y > y2 && !getBlocked(x,y -1)){
+				((IElement)demon).setPosition(x, y -1);
+			}else if (y < y2 && getBlocked(x,y+1)){
+				if(x < x2 && !getBlocked(x+1,y)){
+					((IElement)demon).setPosition(x+1, y );
+				}else if (x > x2 && !getBlocked(x-1,y)){
+					((IElement)demon).setPosition(x-1, y);
+				}
+			}else if (y > y2 && getBlocked(x,y -1)){
+				if(x < x2 && !getBlocked(x+1,y)){
+					((IElement)demon).setPosition(x+1, y );
+				}else if (x > x2 && !getBlocked(x-1,y)){
+					((IElement)demon).setPosition(x-1, y);
+				}
+			}model.change();	
+		}
+	}
+	
+	/**
+	 * Method to check the contact between a demon and different elements
+	 * @param demon
+	 * 			It's a mobile element
+	 * @param lorann
+	 * 			It's an element
+	 */
+	public void demonContact(IMobileElement demon, IElement lorann)
+	{
+		IElement spell = model.getMap().getSpell();
+		if(((IElement)demon).getX()== lorann.getX() && ((IElement)demon).getY()== lorann.getY()){
+			model.setGameState(GameState.GAMEOVER);
+		}else if(spell!=null &&((IElement)demon).getX() == spell.getX() && ((IElement)demon).getY() == spell.getY()){
+			model.getMap().getMobiles().remove(demon);
+			model.getMap().setSpell(null);
+			((ILorann)model.getMap().getLorann()).setPossessionSpell(SpellState.NotThrow);
+		}
+	}
+
+	/**
+	 * Update the state of Spell depending on the state of Lorann
+	 * @param state
+	 * 		the state of Lorann
+	 */
+	private void setSpellState(LorannState state){
+		IElement spell = model.getMap().getSpell();
+		if(state == LorannState.UP){
+			((ISpell)spell).setState(SpellState.UP);
+		}else if (state == LorannState.DOWN){
+			((ISpell)spell).setState(SpellState.DOWN);
+		}else if (state == LorannState.LEFT){
+			((ISpell)spell).setState(SpellState.LEFT);
+		}else if (state == LorannState.RIGHT){
+			((ISpell)spell).setState(SpellState.RIGHT);
+		}
 	}
 	
 	/**
@@ -243,7 +297,7 @@ public class Controller implements IController {
 			IElement spell = model.getMap().getSpell();
 			int x = spell.getX();
 			int y = spell.getY();
-			contact();
+			spellContact(spell);
 			if (((ISpell)spell).getState().equals(SpellState.UP)){
 				if(getBlocked(x,y-1)){
 					((ISpell)spell).setState(SpellState.DOWN);
@@ -271,11 +325,34 @@ public class Controller implements IController {
 			}model.change();
 	}
 	
-		
+	/**
+	 * Method to check the contact between the spell and different elements
+	 * @param spell
+	 * 			It's an element
+	 */
+	public void spellContact(IElement spell){
+		IElement lorann = model.getMap().getLorann();
+		if(lorann.getX()== spell.getX() && lorann.getY()==spell.getY()){
+			((ILorann)lorann).setPossessionSpell(SpellState.NotThrow);
+			model.getMap().setSpell(null);
+		}
+		for(IMobileElement demon : model.getMap().getMobiles()){
+			if(((IElement)demon).getX()== spell.getX() && ((IElement)demon).getY()== spell.getY()){
+				model.getMap().getMobiles().remove(demon);
+				model.getMap().setSpell(null);
+				((ILorann)model.getMap().getLorann()).setPossessionSpell(SpellState.NotThrow);
+			}
+		}
+	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see contract.IController#update()
+	 */
 	public void update(){
-		moveMobileElement();
 		updateSprites();
+		moveMobileElement();
+
 	}
 	
 	/**
@@ -289,26 +366,5 @@ public class Controller implements IController {
 		
 	}
 	
-	/**
-	 * Method to check the contact between different elements
-	 */
-	public void contact(){
-		IElement lorann = model.getMap().getLorann();
-		IElement spell = model.getMap().getSpell();
-		if(lorann.getX()== spell.getX() && lorann.getY()==spell.getY()){
-			((ILorann)lorann).setPossessionSpell(SpellState.NotThrow);
-			model.getMap().setSpell(null);
-		}
-		for(IMobileElement demon : model.getMap().getMobiles()){
-			if(((IElement)demon).getX()== spell.getX() && ((IElement)demon).getY()== spell.getY()){
-				System.out.println(demon + "mort");
-				model.getMap().getMobiles().remove(demon);
-				model.getMap().setSpell(null);
-				((ILorann)model.getMap().getLorann()).setPossessionSpell(SpellState.NotThrow);
-			}
-		}
-	}
-	
-
 
 }

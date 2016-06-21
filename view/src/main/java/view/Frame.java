@@ -9,7 +9,8 @@ import contract.IController;
 import contract.IFrame;
 import contract.IGame;
 
-/** This class Frame is used to run what is present in the game window
+/** 
+ * <b>This class Frame is used to create the game window</b>
  * 
  * @author Aurelia
  * @version 16.06.16
